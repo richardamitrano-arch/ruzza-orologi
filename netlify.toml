@@ -1,0 +1,11 @@
+# One-click deploy config — Netlify.
+# Connect the repo on netlify.com and it auto-detects this file. Nothing else to set.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback so deep links / refresh on /orologi and /borse work.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

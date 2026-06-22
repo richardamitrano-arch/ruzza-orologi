@@ -1,0 +1,35 @@
+{
+  "name": "ruzza-orologi",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "sync:commerce": "node scripts/sync-commerce.mjs",
+    "sync:commerce:check": "node scripts/sync-commerce.mjs --dry-run",
+    "build": "tsc --noEmit && vite build",
+    "postbuild": "node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\"",
+    "build:fresh": "npm run sync:commerce && npm run build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^11.3.8",
+    "lenis": "^1.1.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "serve": "^14.2.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}
