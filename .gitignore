@@ -1,4 +1,32 @@
+# dipendenze
 node_modules/
+
+# build output
 dist/
+dist-cloudflare/
+dist-apex/
+
+# cache incrementale TypeScript
+*.tsbuildinfo
+
+# app iOS Capacitor (build + Pods, ~234M) — il source è capacitor.config.ts + resources/ + scripts
+ios/
+
+# archivi/binari enormi non serviti dal sito
+_media_archive/
+
+# lockfile duplicati (la CI usa npm ci con package-lock.json)
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# config/cache locale
+.claude/
+.wrangler/
+
+# macOS / log
 .DS_Store
 *.log
+
+# segreti segretaria (i valori reali; il template .example resta committato)
+.env.secretary
+.env.secretary.local

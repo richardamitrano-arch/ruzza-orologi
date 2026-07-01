@@ -1,12 +1,27 @@
 import { useEffect, useRef } from 'react'
 import { mediaPath } from '../lib/routing'
 
-export const HERO_VH = 650
+export const HERO_VH = 500
 const FRAME_COUNT = 135
-// Scroll-scrubbed hero film — Picsart 4K export (16:9). The canvas cover-fits,
-// so it fills desktop (16:9) and mobile (center-crop) cleanly, no bars.
-const HERO_DIR = 'hero-picsart'
-const frameSrc = (frame: number) => mediaPath(`/media/${HERO_DIR}/f_${String(frame).padStart(3, '0')}.jpg`)
+// Il loader si sblocca dopo questi primi frame (non tutti i 135): il resto continua
+// a precaricarsi in sottofondo mentre sei sul 1° hero. Evita lo splash "appeso"
+// 12-30s su mobile (scaricare 14MB prima di mostrare la pagina). Lo scrub disegna
+// comunque i frame man mano che arrivano.
+const READY_THRESHOLD = 24
+// Scroll-scrubbed hero film — export Picsart 4K (16:9). Il canvas cover-fitta:
+// riempie desktop (16:9) e mobile (center-crop) senza barre.
+// Frame in WebP a PIENA risoluzione 1920×1080 (stessa qualità del JPEG, ~30% in meno
+// di peso) → si possono precaricare TUTTI senza perdere nitidezza, su desktop e mobile.
+const HERO_DIR = 'hero-picsart-webp'
+const frameSrc = (frame: number) => mediaPath(`/media/${HERO_DIR}/f_${String(frame).padStart(3, '0')}.webp`)
+// Se un frame resta "appeso" (né load né error) non blocca il loader: dopo questo
+// tempo lo si conta comunque come risolto (la barra non si pianta al 99%).
+const FRAME_TIMEOUT_MS = 15000
+const BACKGROUND_BATCH_SIZE = 8
+const BACKGROUND_BATCH_DELAY_MS = 120
+
+type Hero2Prog = { loaded: number; total: number }
+type Win = Window & { __ruzzaHero2Ready?: boolean; __ruzzaHero2Prog?: Hero2Prog }
 
 export default function HeroSequence() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -22,12 +37,48 @@ export default function HeroSequence() {
     const targetContext = context
 
     const images = new Map<number, HTMLImageElement>()
+    const settled = new Set<number>()
+    const timers = new Map<number, number>()
+    let loadedCount = 0
     let activeFrame = 1
     let lastDrawnFrame = 0
     let lastPreloadedFrame = 0
     let lastCanvasWidth = 0
     let lastCanvasHeight = 0
-    let playRaf = 0
+
+    // Su mobile/touch la RAM è limitata: tenere tutti i 135 frame 1080p decodificati
+    // (~1 GB) faceva "andare in pappa" lo scroll (il browser sfrattava il resto della
+    // pagina). Qui teniamo solo una finestra di frame attorno a quello corrente e
+    // liberiamo gli altri — si ricaricano al volo dalla cache HTTP se torni indietro.
+    const lowMem = window.matchMedia('(max-width: 899px), (hover: none), (pointer: coarse)').matches
+    const KEEP_WINDOW = 12
+
+    // Progresso REALE del 2° hero: ogni frame risolto (load O error O timeout) avanza il
+    // contatore e lo segnala al LoadingScreen → la barra è "a tempo" e il loader non
+    // sparisce finché l'orologio scomposto NON è davvero caricato.
+    const win = window as Win
+    const markSettled = (frame: number) => {
+      if (settled.has(frame)) return
+      settled.add(frame)
+      const t = timers.get(frame)
+      if (t) {
+        window.clearTimeout(t)
+        timers.delete(frame)
+      }
+      loadedCount += 1
+      // La barra del loader si riempie sui primi READY_THRESHOLD frame; raggiunta la
+      // soglia segnala "pronto" e smette (gli altri frame caricano silenziosi).
+      if (loadedCount <= READY_THRESHOLD) {
+        win.__ruzzaHero2Prog = { loaded: loadedCount, total: READY_THRESHOLD }
+        window.dispatchEvent(
+          new CustomEvent('ruzza:hero2-progress', { detail: { loaded: loadedCount, total: READY_THRESHOLD } }),
+        )
+        if (loadedCount >= READY_THRESHOLD) {
+          win.__ruzzaHero2Ready = true
+          window.dispatchEvent(new Event('ruzza:hero2-ready'))
+        }
+      }
+    }
 
     const getImage = (frame: number) => {
       const cached = images.get(frame)
@@ -37,11 +88,12 @@ export default function HeroSequence() {
       image.decoding = 'async'
       image.src = frameSrc(frame)
       image.onload = () => {
-        if (frame === activeFrame) {
-          drawFrame(frame)
-        }
+        if (frame === activeFrame) drawFrame(frame)
+        markSettled(frame)
       }
+      image.onerror = () => markSettled(frame)
       images.set(frame, image)
+      timers.set(frame, window.setTimeout(() => markSettled(frame), FRAME_TIMEOUT_MS))
       return image
     }
 
@@ -52,6 +104,24 @@ export default function HeroSequence() {
         const next = Math.min(FRAME_COUNT, Math.max(1, frame + offset))
         getImage(next)
       }
+    }
+
+    // Mobile: libera dalla memoria i frame lontani dalla finestra corrente.
+    const evictFar = (frame: number) => {
+      if (!lowMem) return
+      images.forEach((img, f) => {
+        if (Math.abs(f - frame) > KEEP_WINDOW) {
+          img.onload = null
+          img.onerror = null
+          img.src = ''
+          images.delete(f)
+          const t = timers.get(f)
+          if (t) {
+            window.clearTimeout(t)
+            timers.delete(f)
+          }
+        }
+      })
     }
 
     const sizeCanvas = () => {
@@ -108,6 +178,7 @@ export default function HeroSequence() {
       activeFrame = frame
       drawFrame(frame)
       preloadAround(frame)
+      evictFar(frame)
 
       if (railRef.current) {
         railRef.current.style.width = `${Math.max(8, progress * 100)}%`
@@ -140,54 +211,28 @@ export default function HeroSequence() {
       }
     }
 
-    const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
+    // Prima carico solo i frame necessari per rendere fluido l'ingresso nel secondo
+    // hero. Gli altri restano full-res ma partono a piccoli batch in background:
+    // stessa qualita, meno contesa col video hero e loader piu rapido.
+    for (let f = 1; f <= READY_THRESHOLD; f += 1) getImage(f)
 
-    const cancelPlayback = () => {
-      if (playRaf) {
-        cancelAnimationFrame(playRaf)
-        playRaf = 0
+    let backgroundFrame = READY_THRESHOLD + 1
+    let backgroundTimer = 0
+    const preloadBackgroundBatch = () => {
+      let count = 0
+      while (backgroundFrame <= FRAME_COUNT && count < BACKGROUND_BATCH_SIZE) {
+        getImage(backgroundFrame)
+        backgroundFrame += 1
+        count += 1
+      }
+      if (backgroundFrame <= FRAME_COUNT) {
+        backgroundTimer = window.setTimeout(preloadBackgroundBatch, BACKGROUND_BATCH_DELAY_MS)
       }
     }
+    // Su mobile NON precarichiamo tutti i 135 frame (sarebbe la bomba di memoria):
+    // arrivano on-demand con lo scroll, tramite preloadAround.
+    if (!lowMem) backgroundTimer = window.setTimeout(preloadBackgroundBatch, 1500)
 
-    const playFilm = () => {
-      cancelPlayback()
-      activeFrame = 1
-      drawFrame(1)
-
-      const startY = section.getBoundingClientRect().top + window.scrollY
-      const endY = startY + Math.max(0, section.offsetHeight - window.innerHeight)
-      const distance = endY - startY
-
-      window.scrollTo({ top: startY, behavior: 'auto' })
-      syncToScroll()
-
-      if (distance <= 4 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-      const duration = window.innerWidth < 768 ? 7600 : 8600
-      const started = performance.now()
-      const step = (now: number) => {
-        const progress = Math.min(1, (now - started) / duration)
-        window.scrollTo(0, startY + distance * easeInOutCubic(progress))
-        syncToScroll()
-        if (progress < 1) {
-          playRaf = requestAnimationFrame(step)
-        } else {
-          playRaf = 0
-        }
-      }
-      playRaf = requestAnimationFrame(step)
-    }
-
-    const resetToStart = () => {
-      cancelPlayback()
-      activeFrame = 1
-      drawFrame(1)
-      syncToScroll()
-    }
-
-    getImage(1)
-    preloadAround(1)
-    drawFrame(1)
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -200,20 +245,15 @@ export default function HeroSequence() {
       { rootMargin: '120% 0px' },
     )
     observer.observe(section)
+
     window.addEventListener('resize', syncToScroll)
-    window.addEventListener('ruzza:play-watch-film', playFilm)
-    window.addEventListener('ruzza:reset-watch-film', resetToStart)
-    window.addEventListener('wheel', cancelPlayback, { passive: true })
-    window.addEventListener('touchstart', cancelPlayback, { passive: true })
     return () => {
-      cancelPlayback()
       stopLoop()
       observer.disconnect()
       window.removeEventListener('resize', syncToScroll)
-      window.removeEventListener('ruzza:play-watch-film', playFilm)
-      window.removeEventListener('ruzza:reset-watch-film', resetToStart)
-      window.removeEventListener('wheel', cancelPlayback)
-      window.removeEventListener('touchstart', cancelPlayback)
+      if (backgroundTimer) window.clearTimeout(backgroundTimer)
+      timers.forEach((t) => window.clearTimeout(t))
+      timers.clear()
     }
   }, [])
 
@@ -227,7 +267,7 @@ export default function HeroSequence() {
     >
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-ink">
         <img
-          src={mediaPath(`/media/${HERO_DIR}/f_001.jpg`)}
+          src={frameSrc(1)}
           alt=""
           aria-hidden
           className="absolute inset-0 h-full w-full object-cover"

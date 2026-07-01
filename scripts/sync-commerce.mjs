@@ -7,8 +7,9 @@ const outFile = path.join(root, 'src/data/commerce.json')
 const dryRun = process.argv.includes('--dry-run')
 
 const SOURCES = {
-  orologi: 'https://ruzzaorologi.com/products.json?limit=250 + /collections/orologi/products.json',
-  luxuryBags: 'https://ruzzaorologi.com/collections/luxury-bags/products.json?limit=250',
+  orologi: 'https://ruzzaorologi.com/products.json?limit=250',
+  luxuryBags: 'https://ruzzabags.com/products.json?limit=250',
+  gioielli: 'https://ruzzabags.com/collections/gioielli/products.json?limit=250',
   ruzzaWatch: 'https://ruzzawatch.com/products.json?limit=250',
   profumi: 'https://ruzzawatch.com/pages/lorenzo-ruzza-prestigious',
 }
@@ -38,7 +39,40 @@ const WATCH_BRANDS = [
   'Zenith',
 ]
 
-const BAG_BRANDS = ['Chanel', 'Dior', 'Gucci', 'Hermes', 'Louis Vuitton', 'Prada']
+const BAG_BRANDS = [
+  'Balenciaga', 'Bottega Veneta', 'Burberry', 'Celine', 'Chanel', 'Dior', 'Dolce & Gabbana',
+  'Fendi', 'Goyard', 'Gucci', 'Hermes', 'Jacquemus', 'Louis Vuitton', 'Prada', 'Saint Laurent',
+]
+const NON_BAG_TERMS =
+  /\b(felpa|hoodie|sweatshirt|maglia|t-?shirt|shirt|camicia|giacca|jacket|pantalon|pants|shorts|scarpa|sneaker|shoes|cappello|hat|coat|gilet)\b/i
+const BAG_TERMS =
+  /\b(luxury bag|borse?|handbag|borsa|borsone|tracolla|marsupio|zaino|tote|clutch|pochette|valigia|wallet|portafogli|birkin|kelly|marmont|papillon|alma|noe|agenda)\b/i
+
+// Gioielli (store ruzzabags.com → collezione "Gioielli"). Allineato a src/data/buildCommerce.mjs.
+const JEWELRY_TERMS =
+  /\b(anelli?|braccial\w*|bracelet|collan\w*|necklace|orecchin\w*|earring|ciondol\w*|pendant|gioiell\w*|jewel|groumette|girocollo|solitario|bangle|spilla)\b/i
+
+function isJewelryProduct(product) {
+  const pt = (product.product_type || '').toLowerCase()
+  if (/anello|braccial|collana|orecchin|ciondol|gioiell/.test(pt)) return true
+  const haystack = `${product.title || ''} ${(product.tags || []).join(' ')}`.toLowerCase()
+  return JEWELRY_TERMS.test(haystack)
+}
+
+function jewelryType(product) {
+  const title = (product.title || '').toLowerCase()
+  const pt = (product.product_type || '').toLowerCase()
+  if (/anelli?|solitario|\bfede\b|fedin/.test(title)) return 'Anelli'
+  if (/braccial|bracelet|groumette|tennis|bangle/.test(title)) return 'Bracciali'
+  if (/collan|necklace|girocollo|catenin/.test(title)) return 'Collane'
+  if (/orecchin|earring/.test(title)) return 'Orecchini'
+  if (/ciondol|pendant|charm/.test(title)) return 'Ciondoli'
+  if (/spilla|brooch/.test(title)) return 'Spille'
+  if (/anello/.test(pt)) return 'Anelli'
+  if (/braccial/.test(pt)) return 'Bracciali'
+  if (/collana/.test(pt)) return 'Collane'
+  return 'Gioielli'
+}
 
 const PERFUMES = [
   {
@@ -60,6 +94,10 @@ const PERFUMES = [
     image: 'https://cdn.shopify.com/s/files/1/0913/7137/2884/files/prestigious-onice.png?v=1781623365',
   },
 ]
+
+// Allineati a src/data/{commerce.ts,buildCommerce.mjs}: soglia-lusso + SKU sintetico.
+const MIN_LUX_PRICE = 100
+const SKU_PREFIX = { orologi: 'OR', 'luxury-bags': 'LB', 'ruzza-watch': 'RW', profumi: 'LR', gioielli: 'GI' }
 
 function slugify(value) {
   return String(value)
@@ -123,15 +161,39 @@ function parsePrice(value) {
   return Number.isFinite(price) ? price : 0
 }
 
+// Un tag NON è un brand se è un colore, uno stile, una misura o un descrittore generico.
+// Ancorato (^...$): scarta solo i tag che SONO esattamente questi termini.
+const NON_BRAND_TAG =
+  /^(orologi|orologio|luxury ?bags?|import|a mano|fatto a mano|a spalla|a tracolla|tracolla|vintage|usat[oa]|nuov[oa]|new|original[ei]|gioiell\w*|borse?|bag|second[oa]|pelle|tela|canvas|bianc[oa]|ner[oa]|ross[oa]|beige|marron[ei]|verde|blu|giall[oa]|grigi[oa]|rosa|oro|argento|mini|maxi|medium|small|large|gm|pm|donna|uomo|unisex|marsupio|falabella|pochette|clutch|zaino|tote|shopper|shopping|baguette|hobo|portafogli\w*|wallet|cintura|belt|borsone|valigia|trolley)$/i
+
 function detectBrand(product, brands, fallback = '') {
   const tags = product.tags || []
-  const haystack = `${product.title || ''} ${product.vendor || ''} ${tags.join(' ')}`.toLowerCase()
-  const brand = brands.find((item) => haystack.includes(item.toLowerCase()))
+  const titleHaystack = `${product.title || ''} ${product.handle || ''}`.toLowerCase()
+  const productBrand = brands.find((item) => titleHaystack.includes(item.toLowerCase()))
+  if (productBrand) return productBrand
+  const vendorBrand = brands.find((item) => String(product.vendor || '').toLowerCase().includes(item.toLowerCase()))
+  if (vendorBrand) return vendorBrand
+  const tagHaystack = tags.join(' ').toLowerCase()
+  const brand = brands.find((item) => tagHaystack.includes(item.toLowerCase()))
   if (brand) return brand
-  const tag = tags.find((item) => !/orologi|orologio|luxury bags|import/i.test(item))
-  if (tag) return tag.replace(/^Herm[eè]s$/i, 'Hermes')
+  // Match anche con spazi/punteggiatura rimossi (es. tag "louisvuitton" → Louis Vuitton).
+  const compactHaystack = `${titleHaystack} ${tagHaystack} ${String(product.vendor || '').toLowerCase()}`.replace(/[^a-z0-9]/g, '')
+  const compactBrand = brands.find((item) => compactHaystack.includes(item.toLowerCase().replace(/[^a-z0-9]/g, '')))
+  if (compactBrand) return compactBrand
+  // Solo per categorie senza fallback dedicato (orologi): prova un tag come brand.
+  // Per le borse (fallback='Luxury Bags') NON usiamo tag arbitrari → niente brand-spazzatura.
+  if (!fallback) {
+    const tag = tags.find((item) => item && !NON_BRAND_TAG.test(item.trim()))
+    if (tag) return tag.replace(/^Herm[eè]s$/i, 'Hermes')
+  }
   if (product.vendor && !/ruzza/i.test(product.vendor)) return product.vendor
   return fallback || 'Ruzza Orologi'
+}
+
+function isLikelyBagProduct(product) {
+  const haystack = `${product.title || ''} ${(product.tags || []).join(' ')} ${product.product_type || ''} ${product.body_html || ''}`
+  if (NON_BAG_TERMS.test(haystack)) return false
+  return BAG_TERMS.test(haystack) || BAG_BRANDS.some((brand) => haystack.toLowerCase().includes(brand.toLowerCase()))
 }
 
 function mapImages(product) {
@@ -162,7 +224,6 @@ function mapProduct(product, { category, source, baseUrl, brand, collectionHandl
   const variant = firstVariant(product)
   const price = parsePrice(variant.price)
   const images = mapImages(product)
-  const collectionUrl = `${baseUrl}/collections/${collectionHandle}`
   return {
     id: `${category}:${product.id}`,
     shopifyProductId: String(product.id),
@@ -182,17 +243,16 @@ function mapProduct(product, { category, source, baseUrl, brand, collectionHandl
     price,
     compareAtPrice: variant.compare_at_price ? parsePrice(variant.compare_at_price) : null,
     currency: 'EUR',
-    onRequest: price <= 0,
+    onRequest: price < MIN_LUX_PRICE,
     available: (product.variants || []).some((item) => Boolean(item.available)),
     inventoryPolicy: variant.inventory_policy || '',
-    sku: variant.sku || '',
+    sku: variant.sku || `${SKU_PREFIX[category] || 'RZ'}-${product.id}`,
     variants: mapVariants(product),
     options: product.options || [],
     images,
     featuredImage: images[0]?.src || '',
     altText: product.title || '',
     url: `${baseUrl}/products/${product.handle}`,
-    collectionUrl,
     status: product.published_at ? 'published' : 'draft',
     publishedAt: product.published_at || null,
     updatedAt: product.updated_at || null,
@@ -206,6 +266,7 @@ function productCollections(product, category, brand, subcategory) {
   if (category === 'ruzza-watch') return [`ruzza-watch-${subcategory}`, 'ruzza-watch']
   if (category === 'orologi') return ['orologi', `orologi-${slugify(brand)}`]
   if (category === 'luxury-bags') return ['luxury-bags', `luxury-bags-${slugify(brand)}`]
+  if (category === 'gioielli') return ['gioielli', `gioielli-${slugify(brand)}`]
   return [category]
 }
 
@@ -213,10 +274,6 @@ function remapCollections(product, category, brand, subcategory) {
   return {
     ...product,
     collections: productCollections(product, category, brand, subcategory),
-    collectionUrl:
-      category === 'ruzza-watch'
-        ? `https://ruzzawatch.com/collections/ruzza-watch-${subcategory}`
-        : product.collectionUrl,
   }
 }
 
@@ -228,7 +285,6 @@ function brandCollections(products, prefix) {
       name,
       count,
       handle: `${prefix}-${slugify(name)}`,
-      url: `https://ruzzaorologi.com/collections/${prefix}-${slugify(name)}`,
     }))
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'it'))
 }
@@ -271,7 +327,6 @@ function perfumeProducts() {
     featuredImage: item.image,
     altText: item.title,
     url,
-    collectionUrl: url,
     status: 'published',
     publishedAt: null,
     updatedAt: null,
@@ -282,20 +337,32 @@ function perfumeProducts() {
 }
 
 async function main() {
-  const [allRuzzaOrologi, collectionWatches, bagRaw, ruzzaRaw] = await Promise.all([
+  const [allRuzzaOrologi, ruzzaRaw, bagsStoreRaw, jewelryRaw] = await Promise.all([
     fetchProducts('https://ruzzaorologi.com/products.json'),
-    fetchProducts('https://ruzzaorologi.com/collections/orologi/products.json'),
-    fetchProducts('https://ruzzaorologi.com/collections/luxury-bags/products.json'),
     fetchProducts('https://ruzzawatch.com/products.json'),
+    fetchProducts('https://ruzzabags.com/products.json'),
+    fetchProducts('https://ruzzabags.com/collections/gioielli/products.json'),
   ])
 
   const watchRaw = dedupe([
-    ...collectionWatches,
     ...allRuzzaOrologi.filter((product) => {
       const text = `${product.product_type || ''} ${(product.tags || []).join(' ')}`.toLowerCase()
       return text.includes('watch') || text.includes('orologi') || text.includes('orologio')
     }),
   ])
+
+  // Borse + gioielli dallo store dedicato ruzzabags.com. Gioielli = collezione "Gioielli"
+  // (autoritativa); le borse = tutto il resto. Fallback allo store orologi se ruzzabags è giù.
+  const fromRuzzabags = bagsStoreRaw.length > 0
+  const jewelrySet = new Set(
+    (jewelryRaw.length ? jewelryRaw : bagsStoreRaw.filter(isJewelryProduct)).map((product) => String(product.id)),
+  )
+  const jewelrySourceRaw = bagsStoreRaw.filter((product) => jewelrySet.has(String(product.id)))
+  const bagRaw = fromRuzzabags
+    ? bagsStoreRaw.filter((product) => !jewelrySet.has(String(product.id)))
+    : allRuzzaOrologi.filter(isLikelyBagProduct)
+  const bagsBaseUrl = fromRuzzabags ? 'https://ruzzabags.com' : 'https://ruzzaorologi.com'
+  const bagsSource = fromRuzzabags ? 'ruzzabags.com' : 'ruzzaorologi.com'
 
   const watches = watchRaw.map((product) => {
     const brand = detectBrand(product, WATCH_BRANDS)
@@ -318,12 +385,28 @@ async function main() {
     return remapCollections(
       mapProduct(product, {
         category: 'luxury-bags',
-        source: 'ruzzaorologi.com',
-        baseUrl: 'https://ruzzaorologi.com',
+        source: bagsSource,
+        baseUrl: bagsBaseUrl,
         brand,
         collectionHandle: `luxury-bags-${slugify(brand)}`,
       }),
       'luxury-bags',
+      brand,
+      '',
+    )
+  })
+
+  const jewelry = jewelrySourceRaw.map((product) => {
+    const brand = jewelryType(product)
+    return remapCollections(
+      mapProduct(product, {
+        category: 'gioielli',
+        source: 'ruzzabags.com',
+        baseUrl: 'https://ruzzabags.com',
+        brand,
+        collectionHandle: `gioielli-${slugify(brand)}`,
+      }),
+      'gioielli',
       brand,
       '',
     )
@@ -361,12 +444,14 @@ async function main() {
       watchMaison: ['Rolex', 'Patek Philippe', 'Audemars Piguet'],
       watchBrands: brandCollections(watches, 'orologi'),
       bagBrands: brandCollections(luxuryBags, 'luxury-bags'),
-      perfumeBrands: [{ name: 'Prestigious', count: perfumes.length, handle: 'prestigious', url: SOURCES.profumi }],
+      jewelryBrands: brandCollections(jewelry, 'gioielli'),
+      perfumeBrands: [{ name: 'Prestigious', count: perfumes.length, handle: 'prestigious' }],
     },
     products: {
       ruzzaWatch,
       watches,
       luxuryBags,
+      jewelry,
       perfumes,
     },
   }
@@ -375,6 +460,7 @@ async function main() {
     ruzzaWatch: ruzzaWatch.length,
     watches: watches.length,
     luxuryBags: luxuryBags.length,
+    jewelry: jewelry.length,
     perfumes: perfumes.length,
   }
 

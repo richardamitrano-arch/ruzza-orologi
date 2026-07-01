@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { WHATSAPP, PHONE_TEL, PHONE_DISPLAY, EMAIL, TELEGRAM } from '../lib/contact'
+import { PHONE_TEL, PHONE_DISPLAY, EMAIL, TELEGRAM, whatsappHrefForCategory } from '../lib/contact'
 
-const channels = [
+const buildChannels = (whatsappHref: string) => [
   {
     label: 'WhatsApp',
     sub: 'Assistenza diretta',
-    href: WHATSAPP,
+    href: whatsappHref,
     icon: (
       <path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1112 20zm4.4-5.6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 00-.7.3c-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1s.2-1 .1-1.1z" />
     ),
@@ -34,8 +34,14 @@ const channels = [
   },
 ]
 
-export default function ContactDock() {
+type ContactDockProps = {
+  compact?: boolean
+  category?: string
+}
+
+export default function ContactDock({ compact = false, category }: ContactDockProps) {
   const [open, setOpen] = useState(false)
+  const channels = buildChannels(whatsappHrefForCategory(category))
 
   useEffect(() => {
     if (!open) return
@@ -45,7 +51,7 @@ export default function ContactDock() {
   }, [open])
 
   return (
-    <div className="fixed bottom-5 right-5 z-[55] flex flex-col items-end gap-3 md:bottom-7 md:right-7">
+    <div className="fixed bottom-4 right-4 z-[55] flex flex-col items-end gap-3 md:bottom-7 md:right-7">
       {/* Panel */}
       {open && (
         <div className="w-[min(86vw,320px)] overflow-hidden border border-white/12 bg-ink-800/95 backdrop-blur-md shadow-2xl">
@@ -87,7 +93,9 @@ export default function ContactDock() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label={open ? 'Chiudi assistenza' : 'Ti serve aiuto?'}
-        className="flex items-center gap-3 rounded-full bg-malachite px-5 py-3 text-bone shadow-xl transition-all duration-300 ease-expo hover:bg-malachite-bright"
+        className={`flex items-center gap-3 rounded-full bg-malachite text-bone shadow-xl transition-all duration-300 ease-expo hover:bg-malachite-bright ${
+          compact ? 'px-3 py-3 md:px-5' : 'px-5 py-3'
+        }`}
       >
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
           {open ? (
@@ -96,7 +104,7 @@ export default function ContactDock() {
             <path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2z" />
           )}
         </svg>
-        <span className="font-sans text-[0.72rem] uppercase tracking-wide">
+        <span className={`font-sans text-[0.72rem] uppercase tracking-wide ${compact ? 'hidden md:inline' : ''}`}>
           {open ? 'Chiudi' : 'Ti serve aiuto?'}
         </span>
       </button>

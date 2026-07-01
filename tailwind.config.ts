@@ -18,7 +18,7 @@ export default {
         bone: {
           DEFAULT: '#E8E2D3',
           muted: '#A8A290', // ~4.6:1 on ink (body copy, AA)
-          faint: '#79746A', // decorative / large text only
+          faint: '#8A857B', // ~4.9:1 on ink — AA anche su testo piccolo
         },
         // Malachite — the RUZZA watch signature
         malachite: {

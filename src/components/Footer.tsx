@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react'
 import {
   WHATSAPP,
   PHONE_TEL,
@@ -6,11 +7,22 @@ import {
   TELEGRAM,
   ADDRESS,
   VAT,
-  CONTACT_FORM,
-  COLLECTIONS,
   SOCIAL,
+  PRIVACY_POLICY,
 } from '../lib/contact'
 import { appHref, isInternalHref } from '../lib/routing'
+import { shopifyUrl } from '../lib/shopify'
+
+const watchBrandHref = (brand: string) => `/orologi?brand=${encodeURIComponent(brand)}`
+
+const navigateInsideApp = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+  if (!href.startsWith('/') || href.startsWith('/#')) return
+
+  event.preventDefault()
+  window.history.pushState(null, '', appHref(href))
+  window.dispatchEvent(new PopStateEvent('popstate'))
+  window.scrollTo({ top: 0, behavior: 'auto' })
+}
 
 const cols = [
   {
@@ -18,17 +30,19 @@ const cols = [
     links: [
       { label: 'Ruzza Watch', href: '/#ruzza-watch-video' },
       { label: 'Orologi', href: '/orologi' },
-      { label: 'Luxury Bags', href: '/#luxury-bags-film' },
+      { label: 'Novità', href: '/novita' },
+      { label: 'Luxury Bags', href: '/borse' },
+      { label: 'Gioielli', href: '/gioielli' },
       { label: 'Profumi', href: '/#prestigious-video' },
     ],
   },
   {
     title: 'Maison orologi',
     links: [
-      { label: 'Rolex', href: COLLECTIONS.rolex },
-      { label: 'Patek Philippe', href: COLLECTIONS.patek },
-      { label: 'Audemars Piguet', href: COLLECTIONS.ap },
-      { label: 'Novità', href: COLLECTIONS.novita },
+      { label: 'Rolex', href: watchBrandHref('Rolex') },
+      { label: 'Patek Philippe', href: watchBrandHref('Patek Philippe') },
+      { label: 'Audemars Piguet', href: watchBrandHref('Audemars Piguet') },
+      { label: 'Tutti gli orologi', href: '/orologi' },
     ],
   },
   {
@@ -36,8 +50,9 @@ const cols = [
     links: [
       { label: 'La nostra storia', href: '/#maison' },
       { label: 'Valutazione', href: '/#valutazione' },
-      { label: 'Luxury Bags', href: COLLECTIONS.bags },
-      { label: 'T-Shirt', href: COLLECTIONS.tshirt },
+      { label: 'Luxury Bags', href: '/borse' },
+      { label: 'Gioielli', href: '/gioielli' },
+      { label: 'Profumi', href: '/#prestigious-video' },
     ],
   },
   {
@@ -45,9 +60,10 @@ const cols = [
     links: [
       { label: 'WhatsApp', href: WHATSAPP },
       { label: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
-      { label: 'Email', href: `mailto:${EMAIL}` },
-      { label: 'Vendi il tuo orologio', href: CONTACT_FORM },
-      { label: 'Privacy Policy', href: 'https://ruzzaorologi.com/pages/privacy-policy' },
+      { label: EMAIL, href: `mailto:${EMAIL}` },
+      { label: 'Area clienti / Accedi', href: shopifyUrl('/account/login') },
+      { label: 'Vendi il tuo orologio', href: '/#valutazione' },
+      { label: 'Privacy Policy', href: PRIVACY_POLICY },
     ],
   },
 ]
@@ -60,7 +76,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="marble-section marble-section-dark border-t border-white/10 bg-ink-900 pt-[10vh]">
+    <footer className="marble-section marble-section-dark border-t border-white/10 bg-ink-900 pb-28 pt-[10vh] md:pb-0">
       <div className="mx-auto max-w-editorial px-6 md:px-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
@@ -80,6 +96,7 @@ export default function Footer() {
                   <li key={l.label}>
                     <a
                       href={isInternalHref(l.href) ? appHref(l.href) : l.href}
+                      onClick={(event) => navigateInsideApp(event, l.href)}
                       target={/^(#|\/|tel|mailto)/.test(l.href) ? undefined : '_blank'}
                       rel={/^(#|\/|tel|mailto)/.test(l.href) ? undefined : 'noreferrer'}
                       className="font-sans text-sm font-light text-bone/80 transition-colors duration-300 hover:text-bone"
@@ -112,7 +129,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="border-t border-white/5 py-8 font-sans text-[0.65rem] leading-relaxed text-bone-faint/70">
+        <p className="border-t border-white/5 py-8 font-sans text-[0.65rem] leading-relaxed text-bone-faint">
           La commercializzazione e/o l'offerta in vendita tramite il sito www.ruzzaorologi.com o presso
           qualsivoglia spazio fisico del prodotto RUZZA WATCH nella variante di colore denominata
           "Tiffany" né qualsiasi riferimento a "TIFFANY" e/o in color "Tiffany" e/o simile, è da

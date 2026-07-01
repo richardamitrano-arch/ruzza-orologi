@@ -1,5 +1,5 @@
 import { Reveal } from './Reveal'
-import { WHATSAPP, CONTACT_FORM } from '../lib/contact'
+import { EMAIL, VALUATION_FORM, VALUATION_WHATSAPP } from '../lib/contact'
 
 export default function Valuation() {
   return (
@@ -24,11 +24,14 @@ export default function Valuation() {
 
         <Reveal delay={0.18}>
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="btn-solid">
+            <a href={VALUATION_WHATSAPP} target="_blank" rel="noreferrer" className="btn-solid">
               Scrivici su WhatsApp
             </a>
-            <a href={CONTACT_FORM} target="_blank" rel="noreferrer" className="btn-line">
+            <a href={VALUATION_FORM} target="_blank" rel="noreferrer" className="btn-line">
               Compila il modulo
+            </a>
+            <a href={`mailto:${EMAIL}?subject=Valutazione%20orologio`} className="btn-line">
+              Scrivici via email
             </a>
           </div>
         </Reveal>

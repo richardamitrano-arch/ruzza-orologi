@@ -1,12 +1,18 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { mainWatchMaisons, productsByBrand, watchProducts } from '../data/commerce'
+import { sizedImage, imageSrcSet } from '../lib/img'
 import ProductCard from './ProductCard'
 import { Reveal } from './Reveal'
 import { appHref } from '../lib/routing'
 
 export default function WatchMaisons() {
   const [active, setActive] = useState(mainWatchMaisons[0])
-  const products = useMemo(() => productsByBrand(watchProducts, active), [active])
+  useEffect(() => {
+    if (!active || !mainWatchMaisons.includes(active)) {
+      setActive(mainWatchMaisons[0])
+    }
+  }, [active, mainWatchMaisons])
+  const products = useMemo(() => productsByBrand(watchProducts, active), [active, watchProducts])
   const previewProducts = products.slice(0, 4)
   const hero = products[0]
   const catalogHref = `/orologi?brand=${encodeURIComponent(active)}`
@@ -50,10 +56,12 @@ export default function WatchMaisons() {
           <div className="mb-12 grid gap-8 border-y border-white/10 py-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div className="relative aspect-[16/10] overflow-hidden bg-ink-800">
               <img
-                src={hero.featuredImage}
+                src={sizedImage(hero.featuredImage, 900)}
+                srcSet={imageSrcSet(hero.featuredImage, [500, 800, 1100, 1400])}
+                sizes="(max-width: 1024px) 90vw, 45vw"
                 alt={hero.altText}
                 className="h-full w-full object-cover"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
@@ -69,7 +77,7 @@ export default function WatchMaisons() {
           </div>
         )}
 
-        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-3 xl:grid-cols-4">
           {previewProducts.map((product, index) => (
             <ProductCard key={product.id} product={product} dense priority={index < 4} />
           ))}

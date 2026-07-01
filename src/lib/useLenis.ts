@@ -1,32 +1,12 @@
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-
 /**
- * Mounts Lenis smooth scroll for the whole document and drives it from rAF.
- * Disabled automatically when the user prefers reduced motion.
+ * Smooth-scroll (Lenis) è DISATTIVATO di proposito.
+ *
+ * Lo scroll nativo serve perché funzioni il CSS scroll-snap: i video a tutto
+ * schermo (#intro, #luxury-bags-film, #prestigious-video) si fermano quando li
+ * raggiungi, e proseguono solo se scrolli ancora deliberatamente.
+ *
+ * Lenis (momentum smooth-scroll) "scavalcava" i video e impediva lo snap.
+ * Per riattivarlo in futuro: ripristinare l'init di Lenis qui e togliere il
+ * blocco scroll-snap da index.css.
  */
-export function useLenis() {
-  useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduced) return
-
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 1.6,
-    })
-
-    let raf = 0
-    const loop = (time: number) => {
-      lenis.raf(time)
-      raf = requestAnimationFrame(loop)
-    }
-    raf = requestAnimationFrame(loop)
-
-    return () => {
-      cancelAnimationFrame(raf)
-      lenis.destroy()
-    }
-  }, [])
-}
+export function useLenis() {}

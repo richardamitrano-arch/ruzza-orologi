@@ -23,11 +23,21 @@ export default function RuzzaLineup() {
       luxury: productsBySubcategory(ruzzaWatchProducts, 'luxury'),
       basic: productsBySubcategory(ruzzaWatchProducts, 'basic'),
     }),
-    [],
+    [ruzzaWatchProducts],
   )
   const products = groups[active]
   const stats = productStats(products)
   const current = tabs.find((tab) => tab.id === active)!
+  // Colonne adattate al numero di prodotti → niente riga mezza-vuota su PC quando
+  // un tab (es. Luxury) ha pochi modelli; griglia centrata.
+  const n = products.length
+  const gridCols =
+    n >= 4
+      ? 'sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+      : n === 3
+        ? 'sm:grid-cols-2 lg:grid-cols-3'
+        : 'sm:grid-cols-2'
+  const gridMax = n <= 2 ? 'max-w-3xl' : n === 3 ? 'max-w-5xl' : ''
 
   return (
     <section id="ruzza-watch" className="marble-section marble-section-dark relative overflow-hidden bg-ink-900 py-[14vh]">
@@ -67,7 +77,7 @@ export default function RuzzaLineup() {
           <p className="font-display text-3xl text-bone md:text-5xl">{current.label}</p>
         </div>
 
-        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className={`mx-auto grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 sm:gap-y-12 ${gridCols} ${gridMax}`}>
           {products.map((product, index) => (
             <ProductCard
               key={product.id}
@@ -77,6 +87,22 @@ export default function RuzzaLineup() {
               showDescription={false}
             />
           ))}
+        </div>
+
+        {/* CTA grande di sezione: porta allo store Ruzza Watch per acquistare. */}
+        <div className="mt-16 flex flex-col items-center gap-4 border-t border-white/10 pt-12">
+          <a
+            href="https://ruzzawatch.com"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-solid w-full justify-center px-14 py-6 text-base tracking-wide sm:w-auto md:text-lg"
+            data-ruzzawatch-buy
+          >
+            Acquista Ruzza Watch
+          </a>
+          <p className="data text-[0.62rem] uppercase tracking-[0.16em] text-bone-faint">
+            Spedizione in tutta Italia · Pagamento sicuro su ruzzawatch.com
+          </p>
         </div>
       </div>
     </section>

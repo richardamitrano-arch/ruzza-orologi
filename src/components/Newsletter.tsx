@@ -1,17 +1,7 @@
-import { useState, type FormEvent } from 'react'
 import { Reveal } from './Reveal'
+import { SHOPIFY_NEWSLETTER_ACTION } from '../lib/contact'
 
 export default function Newsletter() {
-  const [email, setEmail] = useState('')
-  const [done, setDone] = useState(false)
-  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    if (!valid) return
-    setDone(true)
-  }
-
   return (
     <section className="marble-section marble-section-dark relative overflow-hidden bg-ink-900 py-[16vh]">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[50vh] bg-[radial-gradient(70%_100%_at_50%_0%,rgba(28,122,90,0.18),transparent_70%)]" />
@@ -30,32 +20,31 @@ export default function Newsletter() {
         </Reveal>
 
         <Reveal delay={0.18}>
-          {done ? (
-            <p className="mx-auto mt-12 max-w-md font-display text-2xl italic text-bone">
-              Benvenuto nel Cerchio. Ti scriveremo presto.
-            </p>
-          ) : (
-            <form
-              onSubmit={onSubmit}
-              className="mx-auto mt-12 flex max-w-md flex-col gap-3 sm:flex-row"
-            >
-              <label htmlFor="nl-email" className="sr-only">
-                La tua email
-              </label>
-              <input
-                id="nl-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="la-tua@email.com"
-                className="w-full flex-1 border border-bone/25 bg-transparent px-5 py-4 font-sans text-sm text-bone placeholder:text-bone-faint focus:border-malachite-bright focus:outline-none"
-              />
-              <button type="submit" className="btn-solid justify-center disabled:opacity-40" disabled={!valid}>
-                Iscriviti
-              </button>
-            </form>
-          )}
+          <form
+            method="post"
+            action={SHOPIFY_NEWSLETTER_ACTION}
+            acceptCharset="UTF-8"
+            className="mx-auto mt-12 flex max-w-md flex-col gap-3 sm:flex-row"
+          >
+            <input type="hidden" name="form_type" value="customer" />
+            <input type="hidden" name="utf8" value="✓" />
+            <input type="hidden" name="contact[tags]" value="newsletter" />
+            <label htmlFor="nl-email" className="sr-only">
+              La tua email
+            </label>
+            <input
+              id="nl-email"
+              name="contact[email]"
+              type="email"
+              required
+              autoComplete="email"
+              placeholder="la-tua@email.com"
+              className="w-full flex-1 border border-bone/25 bg-transparent px-5 py-4 font-sans text-base md:text-sm text-bone placeholder:text-bone-faint focus:border-malachite-bright focus:outline-none"
+            />
+            <button type="submit" className="btn-solid justify-center">
+              Iscriviti
+            </button>
+          </form>
         </Reveal>
       </div>
     </section>

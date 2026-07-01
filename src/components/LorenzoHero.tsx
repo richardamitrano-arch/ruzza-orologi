@@ -1,18 +1,16 @@
 import { mediaPath } from '../lib/routing'
+import AutoVideo from './AutoVideo'
 
 export default function LorenzoHero() {
   return (
     <section id="intro" className="relative h-[100svh] w-full overflow-hidden bg-ink">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
+      {/* Video hero: resta e parte anche su smartphone, senza mai il tasto play (vedi AutoVideo). */}
+      <AutoVideo
         src={mediaPath('/media/lorenzo.mp4')}
-        poster={mediaPath('/media/lorenzo_poster.jpg')}
-        ref={(el) => { if (el) el.muted = true }}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+        mobileSrc={mediaPath('/media/lorenzo_mobile.mp4')}
+        firstFrame={mediaPath('/media/lorenzo_poster.jpg')}
+        eager
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/55 via-transparent to-ink/90" />

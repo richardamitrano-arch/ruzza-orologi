@@ -9,19 +9,24 @@ type WatchCatalogProps = {
   initialBrand?: string
 }
 
-const HOME_PREVIEW_DESKTOP = 6 // PC: lista piena
+const HOME_PREVIEW_DESKTOP = 12 // PC: 12 = righe PARI su 2/3/4 colonne (niente riga monca)
 const HOME_PREVIEW_MOBILE = 4 // Mobile: lista corta (meno scroll)
 const priorityBrands = ['Rolex', 'Patek Philippe', 'Audemars Piguet', 'Richard Mille']
-const orderedWatchBrands = [
-  ...priorityBrands.map((name) => watchBrands.find((brand) => brand.name === name)).filter(Boolean),
-  ...watchBrands.filter((brand) => !priorityBrands.includes(brand.name)),
-] as typeof watchBrands
-const previewBrands = orderedWatchBrands.slice(0, 8)
 
 export default function WatchCatalog({ mode = 'preview', initialBrand = 'Tutti' }: WatchCatalogProps) {
+  const orderedWatchBrands = [
+    ...priorityBrands.map((name) => watchBrands.find((brand) => brand.name === name)).filter(Boolean),
+    ...watchBrands.filter((brand) => !priorityBrands.includes(brand.name)),
+  ] as typeof watchBrands
+  const previewBrands = orderedWatchBrands.slice(0, 8)
   const safeInitialBrand =
     initialBrand === 'Tutti' || watchBrands.some((item) => item.name === initialBrand) ? initialBrand : 'Tutti'
   const [brand, setBrand] = useState(safeInitialBrand)
+
+  useEffect(() => {
+    setBrand(safeInitialBrand)
+  }, [safeInitialBrand])
+
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches,
   )
@@ -33,7 +38,7 @@ export default function WatchCatalog({ mode = 'preview', initialBrand = 'Tutti' 
   }, [])
   const products = useMemo(
     () => (brand === 'Tutti' ? watchProducts : productsByBrand(watchProducts, brand)),
-    [brand],
+    [brand, watchProducts],
   )
   const previewCount = isMobile ? HOME_PREVIEW_MOBILE : HOME_PREVIEW_DESKTOP
   const visibleProducts = mode === 'full' ? products : products.slice(0, previewCount)
@@ -82,7 +87,7 @@ export default function WatchCatalog({ mode = 'preview', initialBrand = 'Tutti' 
           ))}
         </div>
 
-        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-3 xl:grid-cols-4">
           {visibleProducts.map((product, index) => (
             <ProductCard key={product.id} product={product} dense priority={index < 4} />
           ))}

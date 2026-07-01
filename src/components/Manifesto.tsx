@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 import { watchProducts } from '../data/commerce'
+import { sizedImage, imageSrcSet } from '../lib/img'
 
 type Beat = { k: string; a: string; b: string; body?: string }
 const BEATS: Beat[] = [
@@ -12,11 +13,6 @@ const BEATS: Beat[] = [
     b: 'il valore del tempo.',
   },
 ]
-
-const HIGH_VALUE_BACKDROP = watchProducts
-  .filter((watch) => watch.price >= 500000 && watch.featuredImage)
-  .sort((a, b) => b.price - a.price)
-  .slice(0, 3)
 
 const BACKDROP_POSITIONS = ['52% 45%', '50% 52%', '48% 45%']
 
@@ -78,6 +74,10 @@ export default function Manifesto() {
   const bgY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.18, 1.32])
   const railWidth = useTransform(scrollYProgress, [0, 1], ['8%', '100%'])
+  const highValueBackdrop = watchProducts
+    .filter((watch) => watch.price >= 500000 && watch.featuredImage)
+    .sort((a, b) => b.price - a.price)
+    .slice(0, 3)
 
   return (
     <section ref={ref} className="relative bg-ink" style={{ height: '300vh' }}>
@@ -88,14 +88,16 @@ export default function Manifesto() {
           style={{ y: bgY, scale: bgScale }}
         >
           <div className="absolute inset-0 grid grid-cols-3">
-            {HIGH_VALUE_BACKDROP.map((watch, index) => (
+            {highValueBackdrop.map((watch, index) => (
               <div key={watch.id} className="relative overflow-hidden border-x border-white/[0.03]">
                 <img
-                  src={watch.featuredImage}
+                  src={sizedImage(watch.featuredImage, 500)}
+                  srcSet={imageSrcSet(watch.featuredImage, [300, 500, 700])}
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                   style={{ objectPosition: BACKDROP_POSITIONS[index] }}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-ink/30" />

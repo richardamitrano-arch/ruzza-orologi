@@ -1,3 +1,5 @@
+import { sizedImage, imageSrcSet } from '../lib/img'
+
 const PRESTIGE = 'https://ruzzawatch.com/pages/lorenzo-ruzza-prestigious'
 
 const heroBottles = [
@@ -79,12 +81,6 @@ const showcases = [
   },
 ]
 
-const steps = [
-  ['I', 'Compila il modulo', 'Inserisci i dati e l’indirizzo dove vuoi ricevere i campioni.'],
-  ['II', 'Prepariamo il cofanetto', 'I tre campioncini Prestigious vengono confezionati e affidati al corriere.'],
-  ['III', 'Li provi a casa', 'Indossali, lasciali evolvere e scegli quale firma senti più tua.'],
-]
-
 export default function PerfumeCatalog() {
   return (
     <section id="profumi" className="lrx lrx-lit">
@@ -95,28 +91,23 @@ export default function PerfumeCatalog() {
 
       <div className="lrx-hero">
         <div className="lrx-wrap">
-          <p className="lrx-eyebrow lrx-rev lrx-in">Dal 1 luglio - Collezione Prestigious</p>
+          <p className="lrx-eyebrow lrx-rev lrx-in">Collezione Prestigious</p>
           <p className="lrx-brand lrx-rev lrx-in">Lorenzo Ruzza</p>
           <h2 className="lrx-serif">
             <span className="lrx-word">Tre</span> <span className="lrx-word">profumi.</span>
             <br />
-            <em>Provali gratis.</em>
+            <em>Elixir Prestigious.</em>
           </h2>
           <p className="lrx-lead lrx-rev lrx-in">
             Tre Elixir Prestigious: <strong>Turchese</strong>, <strong>Lapislazzuli</strong> e <strong>Onice</strong>.
-            Un set campione, spedizione inclusa, senza obbligo d’acquisto.
+            Tre interpretazioni della stessa visione, in un flacone che cita l’alta orologeria.
           </p>
-          <div className="lrx-trust lrx-rev lrx-in">
-            <span className="lrx-chip">✓ Spedizione inclusa</span>
-            <span className="lrx-chip">✓ 3 fragranze nel set</span>
-            <span className="lrx-chip">✓ Nessun obbligo d’acquisto</span>
-          </div>
 
           <div className="lrx-trio lrx-rev lrx-in">
             {heroBottles.map((bottle) => (
               <a key={bottle.name} href={PRESTIGE} target="_blank" rel="noreferrer" className={`lrx-trio-item ${bottle.tone}`}>
                 <span className="lrx-trio-glow" />
-                <img src={bottle.image} alt={`Prestigious ${bottle.name}`} loading="lazy" decoding="async" />
+                <img src={sizedImage(bottle.image, 500)} srcSet={imageSrcSet(bottle.image, [300, 500, 700])} sizes="(max-width: 768px) 30vw, 240px" alt={`Prestigious ${bottle.name}`} loading="lazy" decoding="async" />
                 <span className="lrx-trio-label">{bottle.name}</span>
               </a>
             ))}
@@ -147,7 +138,7 @@ export default function PerfumeCatalog() {
               <a key={fragrance.name} href={PRESTIGE} target="_blank" rel="noreferrer" className="lrx-card lrx-rev lrx-in">
                 <div className={`lrx-card-top ${fragrance.tone}`}>
                   <span className="lrx-halo" />
-                  <img src={fragrance.image} alt={fragrance.title} loading="lazy" decoding="async" />
+                  <img src={sizedImage(fragrance.image, 600)} srcSet={imageSrcSet(fragrance.image, [400, 600, 800])} sizes="(max-width: 768px) 80vw, 360px" alt={fragrance.title} loading="lazy" decoding="async" />
                 </div>
                 <div className="lrx-card-body">
                   <p className="lrx-variant">{fragrance.name}</p>
@@ -179,7 +170,7 @@ export default function PerfumeCatalog() {
             {showcases.map((item) => (
               <div key={item.name} className={`lrx-show-row lrx-rev lrx-in ${item.reverse ? 'rev' : ''}`}>
                 <div className="lrx-show-media">
-                  <img src={item.image} alt={`Lorenzo Ruzza Prestigious ${item.name} - astuccio e flacone`} loading="lazy" decoding="async" />
+                  <img src={sizedImage(item.image, 800)} srcSet={imageSrcSet(item.image, [500, 800, 1100])} sizes="(max-width: 768px) 90vw, 50vw" alt={`Lorenzo Ruzza Prestigious ${item.name} - astuccio e flacone`} loading="lazy" decoding="async" />
                 </div>
                 <div className="lrx-show-text">
                   <p className="lrx-variant">{item.name}</p>
@@ -208,36 +199,6 @@ export default function PerfumeCatalog() {
         </div>
       </div>
 
-      <div className="lrx-section lrx-how">
-        <div className="lrx-wrap">
-          <div className="lrx-sec-head lrx-rev lrx-in">
-            <p className="lrx-eyebrow">Semplice</p>
-            <h2 className="lrx-serif">Come ricevere <em>il tuo set</em></h2>
-          </div>
-          <div className="lrx-steps">
-            {steps.map(([num, title, text]) => (
-              <div key={num} className="lrx-step lrx-rev lrx-in">
-                <div className="lrx-num">{num}</div>
-                <h4>{title}</h4>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="lrx-closer">
-        <div className="lrx-wrap">
-          <p className="lrx-eyebrow lrx-rev lrx-in">Ultimo passo</p>
-          <h2 className="lrx-serif lrx-rev lrx-in">
-            Dove te li <em>spediamo?</em>
-          </h2>
-          <p className="lrx-rev lrx-in">Apri la pagina Prestigious e completa la richiesta: i campioni viaggiano gratis fino alla tua porta.</p>
-          <a href={PRESTIGE} target="_blank" rel="noreferrer" className="lrx-cta lrx-rev lrx-in">
-            Richiedi i campioni
-          </a>
-        </div>
-      </div>
     </section>
   )
 }

@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { sizedImage, imageSrcSet } from '../lib/img'
+import { productHref } from '../lib/routing'
 
 import {
   cleanProductTitle,
   formatCommercePrice,
+  jewelryProducts,
   luxuryBagProducts,
   perfumeProducts,
   ruzzaWatchProducts,
@@ -14,6 +17,7 @@ const CATEGORY_LABEL: Record<CommerceProduct['category'], string> = {
   'ruzza-watch': 'Ruzza Watch',
   orologi: 'Orologi',
   'luxury-bags': 'Borse',
+  gioielli: 'Gioielli',
   profumi: 'Profumi',
 }
 
@@ -25,8 +29,15 @@ export default function SearchOverlay() {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const allProducts = useMemo(
-    () => [...watchProducts, ...ruzzaWatchProducts, ...luxuryBagProducts, ...perfumeProducts],
-    [],
+    () => [
+      ...watchProducts,
+      // esclude gli accessori (es. "GARANZIA RUZZA WATCH" €2,90 senza foto) dalla ricerca
+      ...ruzzaWatchProducts.filter((p) => p.subcategory !== 'accessori'),
+      ...luxuryBagProducts,
+      ...jewelryProducts,
+      ...perfumeProducts,
+    ],
+    [jewelryProducts, luxuryBagProducts, perfumeProducts, ruzzaWatchProducts, watchProducts],
   )
 
   const close = () => {
@@ -115,19 +126,19 @@ export default function SearchOverlay() {
                 {results.length}
                 {results.length === RESULT_LIMIT ? '+' : ''} risultati
               </p>
-              <ul className="mt-4 grid gap-2 pb-6 sm:grid-cols-2">
+              <ul className="mt-4 grid grid-cols-2 gap-2 pb-6 sm:gap-3">
                 {results.map((product) => (
                   <li key={product.id}>
                     <a
-                      href={product.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group flex items-center gap-4 border border-white/10 p-3 transition-colors hover:border-champagne/40 hover:bg-white/5"
+                      href={productHref(product.handle)}
+                      className="group flex flex-col gap-3 border border-white/10 p-3 transition-colors hover:border-champagne/40 hover:bg-white/5 sm:flex-row sm:items-center sm:gap-4"
                     >
-                      <div className="h-16 w-16 shrink-0 overflow-hidden bg-ink-800">
+                      <div className="aspect-square w-full shrink-0 overflow-hidden bg-ink-800 sm:aspect-auto sm:h-16 sm:w-16">
                         {product.featuredImage ? (
                           <img
-                            src={product.featuredImage}
+                            src={sizedImage(product.featuredImage, 400)}
+                            srcSet={imageSrcSet(product.featuredImage, [128, 256, 400])}
+                            sizes="(max-width: 640px) 45vw, 64px"
                             alt={product.altText || cleanProductTitle(product.title)}
                             className="h-full w-full object-cover transition-transform duration-700 ease-expo group-hover:scale-105"
                             loading="lazy"

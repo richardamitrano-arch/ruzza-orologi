@@ -1,3 +1,5 @@
+import { sizedImage, imageSrcSet } from '../lib/img'
+import { productHref } from '../lib/routing'
 import {
   availabilityLabel,
   cleanProductTitle,
@@ -16,18 +18,19 @@ type ProductCardProps = {
 export default function ProductCard({ product, dense = false, showDescription = true, priority = false }: ProductCardProps) {
   return (
     <a
-      href={product.url}
-      target="_blank"
-      rel="noreferrer"
+      href={productHref(product.handle)}
       className="group block min-w-0"
       data-product-handle={product.handle}
+      data-product-title={cleanProductTitle(product.title)}
       data-product-category={product.category}
       data-product-brand={product.brand}
     >
       <div className={`relative overflow-hidden bg-ink-800 ${dense ? 'aspect-[4/5]' : 'aspect-[4/5]'}`}>
         {product.featuredImage ? (
           <img
-            src={product.featuredImage}
+            src={sizedImage(product.featuredImage, 700)}
+            srcSet={imageSrcSet(product.featuredImage, [400, 600, 800, 1000])}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             alt={product.altText || cleanProductTitle(product.title)}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-expo group-hover:scale-[1.055]"
             loading={priority ? 'eager' : 'lazy'}
@@ -57,16 +60,6 @@ export default function ProductCard({ product, dense = false, showDescription = 
             {shortDescription(product, dense ? 110 : 155)}
           </p>
         )}
-        <div className="mt-4 flex flex-wrap gap-2">
-          {product.sku && (
-            <span className="data rounded-full border border-white/10 px-2.5 py-1 text-[0.58rem] uppercase text-bone-faint">
-              SKU {product.sku}
-            </span>
-          )}
-          <span className="data rounded-full border border-white/10 px-2.5 py-1 text-[0.58rem] uppercase text-bone-faint">
-            {product.variants.length} var.
-          </span>
-        </div>
       </div>
     </a>
   )

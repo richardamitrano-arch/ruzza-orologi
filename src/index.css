@@ -10,12 +10,18 @@
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Riserva lo spazio della scrollbar su ENTRAMBI i lati: su desktop la barra
+       verticale non "mangia" solo il bordo destro → contenuto sempre simmetrico.
+       Su mobile (scrollbar overlay) è ignorato e non cambia nulla. */
+    scrollbar-gutter: stable both-edges;
   }
 
   body {
     @apply bg-ink text-bone font-sans antialiased;
     font-weight: 300;
-    overflow-x: hidden;
+    /* `clip` (non `hidden`) evita lo scroll orizzontale SENZA rendere il body un
+       contenitore di scroll: così lo scroll-snap dei video (su <html>) funziona. */
+    overflow-x: clip;
   }
 
   ::selection {
@@ -68,6 +74,14 @@
            transition-all duration-500 ease-expo
            hover:border-bone/80 hover:bg-bone hover:text-ink;
     font-weight: 400;
+  }
+
+  .app-tab {
+    @apply inline-flex h-11 items-center justify-center border border-white/10 px-2 text-center font-sans text-[0.6rem] uppercase tracking-[0.13em] text-bone-muted transition-colors;
+  }
+
+  .app-tab-primary {
+    @apply border-malachite-bright/40 bg-malachite-deep/55 text-malachite-bright;
   }
 
   .btn-solid {
@@ -1033,5 +1047,144 @@
   *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* --- Freno sui 3 video ---
+   Desktop: scroll-snap CSS forte e nativo.
+   Mobile/touch: niente scroll-snap CSS, altrimenti iOS puo' intrappolare lo scroll
+   e impedire di arrivare in fondo. Su mobile non deve lavorare nessun assist JS:
+   documento normale, scorrimento libero fino al footer. */
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  html.ruzza-home-route {
+    scroll-snap-type: y mandatory;
+  }
+
+  html.ruzza-home-route main.home-main > section {
+    scroll-snap-align: start;
+  }
+
+  html.ruzza-home-route #intro,
+  html.ruzza-home-route #luxury-bags-film,
+  html.ruzza-home-route #prestigious-video {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  html.ruzza-home-route footer {
+    scroll-snap-align: end;
+    scroll-snap-stop: normal;
+  }
+
+  html.ruzza-footer-free {
+    scroll-snap-type: none;
+  }
+}
+
+@media (max-width: 899px), (hover: none), (pointer: coarse) {
+  /* MOBILE/TOUCH = NESSUNO snap, NESSUN JS. Su iOS QUALSIASI aggancio (mandatory
+     E proximity) intrappola lo scroll inerziale → niente snap del tutto. Senza alcun
+     meccanismo di aggancio la pagina è un documento normale: arriva in fondo PER
+     COSTRUZIONE. Il freno sui video resta solo su desktop (mouse). NON reintrodurre
+     mai snap o JS qui: l'unica cosa che conta su telefono è arrivare in fondo. */
+  html {
+    scroll-snap-type: none;
+  }
+
+  main.home-main > section,
+  #intro,
+  #luxury-bags-film,
+  #prestigious-video {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
+/* --- Preloader brandizzato (LoadingScreen.tsx) --- */
+.loader-vignette {
+  background: radial-gradient(120% 90% at 50% 42%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+.loader-word {
+  animation: loader-word-in 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes loader-word-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.55em;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.04em;
+    filter: blur(0);
+  }
+}
+.loader-sub {
+  animation: loader-sub-in 1s ease-out 0.5s both;
+}
+@keyframes loader-sub-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.loader-fill {
+  width: 6%;
+  animation: loader-fill 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes loader-fill {
+  from {
+    width: 6%;
+  }
+  to {
+    width: 86%;
+  }
+}
+.loader-fill-done {
+  animation: none;
+  width: 100%;
+  transition: width 0.4s ease-out;
+}
+
+.product-photo-reveal {
+  animation: product-photo-reveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes product-photo-reveal {
+  from {
+    opacity: 0.82;
+    filter: saturate(0.92) brightness(0.82);
+    transform: scale(1.018);
+  }
+  to {
+    opacity: 1;
+    filter: saturate(1) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-word,
+  .loader-sub,
+  .loader-fill,
+  .product-photo-reveal {
+    animation: none;
+  }
+  .loader-word {
+    letter-spacing: 0.04em;
+    opacity: 1;
+    filter: none;
+  }
+  .loader-fill {
+    width: 60%;
   }
 }

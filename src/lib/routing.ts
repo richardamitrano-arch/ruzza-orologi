@@ -15,6 +15,10 @@ export function appHref(href: string) {
   return `${BASE_PATH}${href}` || '/'
 }
 
+export function productHref(handle: string) {
+  return appHref(`/products/${encodeURIComponent(handle)}`)
+}
+
 export function mediaPath(path: string) {
   return appHref(path.startsWith('/') ? path : `/${path}`)
 }

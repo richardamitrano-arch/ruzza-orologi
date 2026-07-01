@@ -1,3 +1,1 @@
-# SPA fallback — serve index.html for every client-side route (/orologi, /borse, ...)
-# Works on Netlify and Cloudflare Pages.
-/*    /index.html   200
+/* /index.html 200

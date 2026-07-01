@@ -17,6 +17,10 @@ export default function LuxuryBags({ mode = 'preview', initialBrand = 'Tutti' }:
   const [brand, setBrand] = useState(safeInitialBrand)
 
   useEffect(() => {
+    setBrand(safeInitialBrand)
+  }, [safeInitialBrand])
+
+  useEffect(() => {
     const onBrand = (event: Event) => {
       const requested = (event as CustomEvent<string>).detail
       if (requested === 'Tutti' || bagBrands.some((item) => item.name === requested)) {
@@ -25,11 +29,11 @@ export default function LuxuryBags({ mode = 'preview', initialBrand = 'Tutti' }:
     }
     window.addEventListener('ruzza:set-bag-brand', onBrand)
     return () => window.removeEventListener('ruzza:set-bag-brand', onBrand)
-  }, [])
+  }, [bagBrands])
 
   const products = useMemo(
     () => (brand === 'Tutti' ? luxuryBagProducts : productsByBrand(luxuryBagProducts, brand)),
-    [brand],
+    [brand, luxuryBagProducts],
   )
   const visibleProducts = mode === 'full' ? products : products.slice(0, HOME_PREVIEW_COUNT)
   const stats = productStats(products)
@@ -77,7 +81,7 @@ export default function LuxuryBags({ mode = 'preview', initialBrand = 'Tutti' }:
           ))}
         </div>
 
-        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-3 xl:grid-cols-4">
           {visibleProducts.map((product, index) => (
             <ProductCard key={product.id} product={product} dense priority={index < 4} />
           ))}
