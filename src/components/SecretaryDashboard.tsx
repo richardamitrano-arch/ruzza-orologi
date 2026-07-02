@@ -25,15 +25,15 @@ const isDone = (c: Conversation) => DONE.has(c.state)
 const demoConversations: Conversation[] = [
   { id: 'n1', channelId: 'luxury', time: '23:48', channel: 'Luxury', name: 'Davide T.', phone: '+39 331 222 5566', state: 'Da seguire', product: 'Rolex Daytona 116500LN', summary: 'Insiste 3 volte sullo sconto sul Daytona. Prezzo tenuto, richiesta girata al team.', nextAction: 'Rispondi su WhatsApp; il team valuta eventuali margini.', priority: 'Alta', messages: [
     { role: 'customer', text: 'Il Daytona ceramica ce l\'avete? Prezzo bomba però.', time: '23:44' },
-    { role: 'assistant', text: 'Buonasera. Sì: Daytona 116500LN ceramica, quadrante bianco, 2022, Box & Papers, a € 34.500. Disponibile.', time: '23:45' },
+    { role: 'assistant', text: 'Buonasera. Sì: Daytona 116500LN ceramica, quadrante bianco, 2022, Box & Papers, a € 34.500. Pronto in boutique.', time: '23:45' },
     { role: 'customer', text: '34.500 è troppo. Fammi 30 tondi e lo prendo subito.', time: '23:46' },
     { role: 'assistant', text: 'La ringrazio dell\'interesse. I prezzi sono quelli indicati e non gestisco sconti: eventuali margini li valuta il team, a cui passo subito la richiesta con priorità.', time: '23:47' },
     { role: 'customer', text: 'Dai su, l\'ultimo prezzo vero, altrimenti vado altrove.', time: '23:48' },
-    { role: 'assistant', text: 'Capisco. Il prezzo non posso trattarlo io — lo fa solo il team, che le risponde qui. Intanto le confermo che il pezzo è completo e disponibile.', time: '23:48' },
+    { role: 'assistant', text: 'Capisco. Il prezzo non posso trattarlo io — lo fa solo il team, che le risponde qui. Intanto le confermo che il pezzo è completo e pronto.', time: '23:48' },
   ] },
   { id: 'n2', channelId: 'borse', time: '00:31', channel: 'Borse', name: 'Chiara V.', phone: '+39 333 444 7788', state: 'Da verificare', product: 'Hermès Birkin 30', summary: 'Vuole riservare la Birkin con un acconto. Nessuna riserva presa, passata al team.', nextAction: 'Passa al team per riserva e acconto.', priority: 'Alta', messages: [
-    { role: 'customer', text: 'La Birkin 30 nera è ancora disponibile?', time: '00:27' },
-    { role: 'assistant', text: 'Buonasera, sì: Birkin 30 Togo nera, hardware oro, ottime condizioni. Disponibile.', time: '00:28' },
+    { role: 'customer', text: 'La Birkin 30 nera è ancora in negozio?', time: '00:27' },
+    { role: 'assistant', text: 'Buonasera, sì: Birkin 30 Togo nera, hardware oro, ottime condizioni. Pronta in boutique.', time: '00:28' },
     { role: 'customer', text: 'La voglio! Me la riservate? Vi mando un acconto per tenerla fino a sabato.', time: '00:30' },
     { role: 'assistant', text: 'Grazie, richiesta chiarissima. La riserva e l\'acconto però li gestisce solo il team: io non posso bloccare il pezzo. Passo subito la sua richiesta con priorità, così le confermano loro qui su WhatsApp.', time: '00:31' },
   ] },
@@ -49,11 +49,11 @@ const demoConversations: Conversation[] = [
   ] },
   { id: 'n5', channelId: 'orologi', time: '03:29', channel: 'Orologi', name: 'Federico M.', phone: '+39 340 111 2233', state: 'AI attiva', product: 'Rolex GMT-Master II', summary: 'Chiede provenienza/autenticità del GMT. Rassicurata senza certificare, dettagli al team.', nextAction: 'Rispondi su WhatsApp; il team per documenti e provenienza.', priority: 'Media', messages: [
     { role: 'customer', text: 'Come faccio a sapere che il GMT non è rubato o falso? Che garanzie date?', time: '03:27' },
-    { role: 'assistant', text: 'Domanda legittima. Trattiamo pezzi selezionati e ogni orologio è coperto dalla nostra garanzia del negozio. Per documentazione e provenienza le risponde direttamente il team, che glieli fornisce qui. Intanto le confermo referenza e disponibilità.', time: '03:29' },
+    { role: 'assistant', text: 'Domanda legittima. Trattiamo pezzi selezionati e ogni orologio è coperto dalla nostra garanzia del negozio. Per documentazione e provenienza le risponde direttamente il team, che glieli fornisce qui. Intanto le confermo referenza e stato del pezzo.', time: '03:29' },
   ] },
   { id: 'n6', channelId: 'borse', time: '04:41', channel: 'Borse', name: 'Beatrice L.', phone: '+39 335 777 8899', state: 'AI attiva', product: 'Chanel 19', summary: 'Chiede una richiamata da Lorenzo. Reindirizzata su WhatsApp, niente chiamate né Lorenzo.', nextAction: 'Rispondi su WhatsApp; niente chiamata né Lorenzo.', priority: 'Media', messages: [
     { role: 'customer', text: 'Per la Chanel 19 mi fate richiamare da Lorenzo così ne parliamo a voce?', time: '04:39' },
-    { role: 'assistant', text: 'Grazie! La seguiamo direttamente qui su WhatsApp — non facciamo chiamate. Mi dica pure cosa le serve sulla Chanel 19 (colore, condizioni, disponibilità) e passo tutto al team, che le risponde qui.', time: '04:41' },
+    { role: 'assistant', text: 'Grazie! La seguiamo direttamente qui su WhatsApp — non facciamo chiamate. Mi dica pure cosa le serve sulla Chanel 19 (colore, condizioni) e passo tutto al team, che le risponde qui.', time: '04:41' },
   ] },
 ]
 
@@ -82,7 +82,26 @@ function mapConversations(api: ApiState): Conversation[] {
 const CHANNELS = ['Tutte', 'Luxury', 'Borse', 'Orologi'] as const
 const PRIORITY_ORDER: Record<Priority, number> = { Alta: 0, Media: 1 }
 const waLink = (phone: string) => { const d = (phone || '').replace(/[^\d]/g, ''); return d ? `https://wa.me/${d}` : undefined }
-const getKey = () => (typeof window === 'undefined' ? '' : new URLSearchParams(window.location.search).get('key') || '')
+// Token cockpit: si apre con ?key=… una volta sola — il token viene spostato in sessionStorage e
+// TOLTO dall'URL (replaceState) così non resta in cronologia/screenshot/link condivisi.
+const getKey = () => {
+  if (typeof window === 'undefined') return ''
+  const fromUrl = new URLSearchParams(window.location.search).get('key') || ''
+  if (fromUrl) {
+    try {
+      sessionStorage.setItem('secretary_key', fromUrl)
+      const url = new URL(window.location.href)
+      url.searchParams.delete('key')
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash)
+    } catch { /* storage/History API non disponibili: si resta col ?key= */ }
+    return fromUrl
+  }
+  try {
+    return sessionStorage.getItem('secretary_key') || ''
+  } catch {
+    return ''
+  }
+}
 
 export default function SecretaryDashboard() {
   const keyRef = useRef<string>(getKey())

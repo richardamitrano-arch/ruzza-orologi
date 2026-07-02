@@ -54,13 +54,41 @@ export async function deleteConversation(kv, phone, channelId = 'orologi') {
 }
 
 // Idempotenza: Meta ritenta i webhook -> non processare due volte lo stesso messaggio (wamid).
+// TTL 72h: i retry di Meta possono arrivare anche a distanza di ore/giorni, 1h era troppo poco.
 export async function alreadySeen(kv, id) {
   if (!kv || !id) return false
   return (await kv.get('seen:' + id)) != null
 }
-export async function markSeen(kv, id, ttl = 3600) {
+export async function markSeen(kv, id, ttl = 259200) {
   if (!kv || !id) return
   await kv.put('seen:' + id, '1', { expirationTtl: ttl })
+}
+
+// Lock best-effort per-conversazione: serializza i turni sullo stesso telefono (KV non è transazionale,
+// ma il lock stringe la finestra di lost-update da secondi — la latenza LLM — a millisecondi).
+// Chi non ottiene il lock ASPETTA e riprova (i turni si accodano invece di pestarsi).
+export async function acquireLock(kv, key, { ttl = 120, attempts = 10, waitMs = 1500 } = {}) {
+  if (!kv) return true
+  const k = 'lock:' + key
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const held = await kv.get(k)
+      if (!held) {
+        await kv.put(k, String(Date.now()), { expirationTtl: ttl })
+        return true
+      }
+    } catch {
+      return true // KV in errore: meglio procedere senza lock che perdere il messaggio
+    }
+    await new Promise((r) => setTimeout(r, waitMs))
+  }
+  return false // lock mai libero (turno appeso?): il TTL lo farà scadere; procediamo comunque
+}
+export async function releaseLock(kv, key) {
+  if (!kv) return
+  try {
+    await kv.delete('lock:' + key)
+  } catch { /* il TTL fa da rete di sicurezza */ }
 }
 
 // Azione dal cockpit: cambia lo stato di una conversazione (passa a umano / gestito / riapri).

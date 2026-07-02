@@ -134,41 +134,55 @@ export const REPLY_TOOL = {
 }
 
 // ---- Guardrail deterministici: rete di sicurezza oltre al prompt ----
-// Principio: un guardrail scatta SOLO su una frase AFFERMATIVA (un impegno vietato che parte davvero).
-// Una frase con negazione ("non facciamo sconti", "non teniamo da parte") è un rifiuto corretto → nessun allarme.
-// Pattern multilingua (IT/EN/FR/DE/ES) perché la segretaria può rispondere nella lingua del cliente.
-const NEGATION = /\b(non|no|nessun\w*|niente|nulla|mai|senza|purtroppo|impossibil\w*|escluso|esclus\w*|not|cannot|can'?t|do(?:es)?n'?t|won'?t|n'?t|ne\b|pas|ni\b|kein\w*|nicht|ohne|sin\b|tampoco|no\s+se)\b/i
+// Principio: un guardrail scatta SOLO su un impegno AFFERMATIVO che parte davvero verso il cliente.
+// La negazione scusa SOLO il proprio frammento (spezzato anche su virgole/;/:) — così un filler di
+// cortesia ("Non si preoccupi, gliela riservo") NON copre più l'impegno che lo segue (audit v2, P0).
+// NB: "ne" NON è negazione in italiano ("Ne tengo uno da parte" è un impegno!) → per il francese basta "pas".
+const NEGATION = /\b(non|no|nessun\w*|niente|nulla|mai|senza|purtroppo|impossibil\w*|escluso|esclus\w*|not|cannot|can'?t|do(?:es)?n'?t|won'?t|n'?t|pas|ni\b|kein\w*|nicht|ohne|sin\b|tampoco|no\s+se)\b/i
 
-// La risposta viene spezzata in frasi/clausole; "ma/però/but…" separano un rifiuto da un eventuale impegno.
-function clauses(text) {
+// Frasi: spezzate su .!?/newline e sulle avversative (un rifiuto e un impegno non si coprono a vicenda).
+function sentences(text) {
   return String(text || '')
-    .split(/(?<=[.!?\n])\s+|\n+|\s+(?:ma|però|pero|bensì|invece|tuttavia|but|however|mais|aber|pero)\s+/i)
+    .split(/(?<=[.!?\n])\s+|\n+|\s+(?:ma|però|pero|bensì|tuttavia|but|however|mais|aber)\s+/i)
     .map((s) => s.trim())
     .filter(Boolean)
 }
+// Frammenti: dentro la frase, spezzati anche su , ; : — la negazione vale solo nel suo frammento.
+function fragments(sentence) {
+  return sentence.split(/\s*[,;:]\s+|\s*[,;:]$/).map((s) => s.trim()).filter(Boolean)
+}
 
 // Delega al team = handoff lecito (la segretaria NON fa la cosa, la passa a chi la gestisce).
-// Excusa solo i pattern marcati deleg:true (riserva/appuntamento generici); mai sconti/permute/richiami.
+// Excusa solo i pattern marcati deleg:true (MENZIONI generiche di riserva/appuntamento); mai gli IMPEGNI
+// in prima persona, mai sconti/permute/richiami. Valutata sull'INTERA risposta (la delega copre la frase
+// accanto: "…un appuntamento in showroom. Il team le conferma l'orario." resta lecito).
 const DELEGATION = /\b(?:il|al|dal|col|del)\s+team\b|\bi\s+colleghi\b|\bun\s+incaricato\b|\bil\s+negozio\b|\bil\s+responsabile\b|\bthe\s+team\b|\bl['’]?[ée]quipe\b|\bdas\s+team\b|\bel\s+equipo\b/i
 
 const FORBIDDEN = [
-  { re: /\bsconto\b|\bscontat\w*|\bribass\w*|\bin\s+meno\b|\bper\s*cento\b|\d\s*%|\bdiscount\w*|\brebate\b|\bremise\b|\brabais\b|\brabatt\w*|\bnachlass\b|\bdescuento\b|\brebaja\b/i, flag: 'menzione_sconto' },
+  { re: /\bsconto\b|\bscontat\w*|\bribass\w*|\bin\s+meno\b|\bper\s*cento\b|\d\s*%|\bprezzo\s+(?:amico|speciale|di\s+favore|riservato)\b|\d[\d.,]*\s*(?:€|euro)?\s+invece\s+di\s+|\bmiglior\w*\s+il\s+prezzo\b|\btrattabil\w*|\bdiscount\w*|\brebate\b|\bremise\b|\brabais\b|\brabatt\w*|\bnachlass\b|\bdescuento\b|\brebaja\b/i, flag: 'menzione_sconto' },
   { re: /\bpermut\w*|\btrade[-\s]?in\b|\bscambi\w*|\béchange\b|\bcanje\b|\beintausch\w*/i, flag: 'menzione_permuta' },
   { re: /\b(spedizione\s+gratuit\w*|gratis|gratuit\w*|24\/?48|domani\s+arriva|consegna\s+garantita|pagamento\s+sicuro\s+al\s+link|free\s+shipping|livraison\s+gratuite|kostenlos\w*|env[ií]o\s+gratis)\b/i, flag: 'promessa_operativa_non_autorizzata' },
   { re: /\b(?:la|lo|ti|vi)\s*richiam\w*|\brichiamer\w*|\brichiamiamo\b|\brichiamar\w*|\bla\s+(?:chiamiamo|chiameremo)\b|per\s+telefono|telefonicament\w*|al\s+telefono|contatter\w*\s+al\s+numero|call\s+you\s+back|we'?ll\s+call\s+you|call\s+you\b|le\s+rappell\w*|rufen\s+.*zur[üu]ck|devolv\w*\s+la\s+llamada/i, flag: 'proposta_contatto_telefonico' },
   { re: /appuntament\w*\s+con\s+lorenzo|incontr\w*\s+con\s+lorenzo|con\s+lorenzo[^.]{0,30}(?:appuntament|incontr|veder)/i, flag: 'proposta_appuntamento_lorenzo' },
   { re: /\bricontatt\w*|\bget\s+back\s+to\s+you\b|\bon\s+vous\s+recontacte\b|\bwir\s+melden\s+uns\b/i, flag: 'menzione_ricontatto' },
-  // Riserva: forma di IMPEGNO (la segretaria si impegna) → mai lecita, solo la negazione scusa.
-  { re: /(?:tener\w*|tengo|teniamo|tenga|terr\w+|metto|mettiamo|metter\w*)\s+(?:\w+\s+){0,2}da\s+parte|te\s+la\s+tengo|gliel[ao]?\s+(?:tengo|blocco|riservo|metto|conservo)|\b(?:le|la|lo|li|gli)\s+(?:riservo|riserviamo|prenoto|prenotiamo|blocco|blocchiamo|conservo)\b|blocc\w+\s+(?:il|lo|la)\s+(?:pezzo|orologio|borsa)|\bzur[üu]cklegen\b/i, flag: 'proposta_riserva' },
-  // Riserva/appuntamento: MENZIONE generica → lecita se delegata al team (deleg:true).
+  // Riserva/appuntamento: IMPEGNO attivo (di chiunque: io, noi, "il team le tiene…") → MAI delegabile.
+  // Copre: enclitici (riservarglielo), verbo+articolo (riserva il pezzo — con lookahead per il sostantivo
+  // "la riserva la conferma il team"), "tengo/tiene/ne tengo … da parte" con gap fino a 4 parole,
+  // "fisso/prenoto l'appuntamento".
+  { re: /(?:tener\w*|tengo|teniamo|tenga|tiene|tenete|terr\w+|mett\w+)\s+(?:\w+\s+){0,6}da\s+parte|te\s+l[ao]\s+(?:tengo|teniamo)|gliel[ao]?\s+(?:tengo|teniamo|tiene|blocco|riservo|riserviamo|metto|conservo)|riserv\w*gliel\w*|prenot\w*gliel\w*|tener\w*gliel\w*|bloccar\w*gliel\w*|\b(?:le|la|lo|li|gli|ve|te)\s+(?:riservo|riserviamo|riserver\w+|prenoto|prenotiamo|prenoter\w+|blocco|blocchiamo|bloccher\w+|conservo|conserviamo)\b|\b(?:riserv(?:o|a|iamo|er\w+|ar\w*)|blocc(?:o|a|hiamo|her\w+|ar\w*)|prenot(?:o|a|iamo|er\w+|ar\w*))\s+(?:gliel[oa]|il|lo|la|l['’]|un[oa]?|quest\w+)(?!\s*conferma)|\b(?:fiss(?:o|iamo|er\w+)|prenot(?:o|iamo))\s+(?:l['’]\s*|un\s+|il\s+suo\s+)?(?:appuntament\w*|visita|incontro)|\bzur[üu]cklegen\b|\bi'?ll\s+hold\b|\bwe'?ll\s+hold\b/i, flag: 'proposta_riserva' },
+  // Riserva/appuntamento: MENZIONE generica → lecita se la risposta delega al team (deleg:true).
   { re: /\briserv\w+|\bprenot\w+|\bconserv\w+|\breserve\b|\breservar\b|\breservier\w*|\bhold\s+(?:it|the)\b/i, flag: 'proposta_riserva', deleg: true },
   { re: /\bappuntament\w*|\bincontr(?:o|i|iamo|arla|arti|iam\w*)\b|\brendez[-\s]?vous\b|\btermin\b|\bmeeting\b|\bappointment\b|\bcita\b/i, flag: 'proposta_appuntamento', deleg: true },
 ]
 
-// Valutazione/acquisto del pezzo del CLIENTE: vietata SOLO se accompagnata da una CIFRA (dare un valore).
-// "il team le risponde per la valutazione" (nessuna cifra) resta lecito → non deve scattare.
-const APPRAISE_VERB = /\b(valut\w+|stim[ao]\b|stimiam\w*|quot\w+|vale\b|valgono\b|(?:ti|le|te|vi)\s+(?:do|offro|pago|dar[òo]|offrir\w*|pagher\w*)|(?:lo|la|li|le)\s+(?:compr\w+|acquist\w+|pagh\w+|prend\w+))\b/i
-const MONEY = /(€|\beuro\b|\beur\b|\d{1,3}(?:[.,]\d{3})+|\b\d{3,}\b|\b\d+\s*(?:k|mila)\b)/i
+// Valutazione/offerta d'acquisto del pezzo del CLIENTE: vietata quando c'è una CIFRA di mezzo.
+// "il team le risponde per la valutazione" (nessuna cifra) resta lecito.
+const APPRAISE_VERB = /\b(valut\w+|stim[ao]\b|stimiam\w*|quot\w+|vale\b|valgono\b|(?:ti|le|te|vi|gli)\s+(?:do|diamo|offro|offriamo|pago|paghiamo|riconosc\w+|dar[òo]|offrir\w*|pagher\w*)|offrirl[ea]\b|offrirgliel\w+|pagarl[oa]\b|valutarl[oa]\b|stimarl[oa]\b|(?:lo|la|li|le)\s+(?:compr\w+|acquist\w+|pagh\w+|prend\w+|ritir\w+))\b/i
+// MONEY: valuta esplicita, migliaia separate, "30k/30 mila", o numeri ≥5 cifre.
+// NIENTE match su numeri a 3-4 cifre nudi (anni "2019", referenze "5711") → stop ai falsi positivi.
+const MONEY = /(€|\beuros?\b|\beur\b|\bchf\b|\busd\b|\$|\d{1,3}(?:[.,]\d{3})+|\b\d+\s*(?:k|mila)\b|\b\d{5,}\b)/i
+// Offerta diretta gergale: "le do 30", "le riconosco 25" — verbo d'offerta con numero attaccato.
+const DIRECT_OFFER = /\b(?:ti|le|vi|gli)\s+(?:do|diamo|offro|offriamo|pago|paghiamo|riconosco|riconosciamo)\s+\d/i
 
 const CRITICAL = new Set([
   'menzione_sconto', 'menzione_permuta', 'possibile_valutazione', 'promessa_operativa_non_autorizzata',
@@ -178,15 +192,32 @@ const SAFE_HANDOFF = 'Su questo la faccio seguire direttamente dal nostro team, 
 
 export function guardrails(result) {
   const flags = new Set(result.quality_flags || [])
-  for (const clause of clauses(result.reply)) {
-    if (NEGATION.test(clause)) continue // frase con negazione = rifiuto corretto, non un impegno
-    const delegated = DELEGATION.test(clause) // "…la conferma il team" = handoff lecito
+  const reply = String(result.reply || '')
+  const delegatedReply = DELEGATION.test(reply)
+
+  // Lista piatta di frammenti (negazione valutata frammento per frammento).
+  const frags = []
+  for (const s of sentences(reply)) for (const f of fragments(s)) frags.push(f)
+
+  for (let i = 0; i < frags.length; i++) {
+    const frag = frags[i]
+    if (NEGATION.test(frag)) continue // la negazione scusa SOLO questo frammento
     for (const g of FORBIDDEN) {
-      if (!g.re.test(clause)) continue
-      if (g.deleg && delegated) continue
+      if (!g.re.test(frag)) continue
+      if (g.deleg && delegatedReply) continue
       flags.add(g.flag)
     }
-    if (APPRAISE_VERB.test(clause) && MONEY.test(clause)) flags.add('possibile_valutazione')
+    if (DIRECT_OFFER.test(frag)) flags.add('possibile_valutazione')
+    if (APPRAISE_VERB.test(frag)) {
+      // Cifra nello STESSO frammento → sempre vietato (anche "il team la valuta 15.000 €").
+      if (MONEY.test(frag)) flags.add('possibile_valutazione')
+      else {
+        // Cifra nel frammento ADIACENTE (verbo e numero separati da punteggiatura): vietato,
+        // a meno che la valutazione sia esplicitamente delegata al team in quel frammento.
+        const near = [frags[i - 1], frags[i + 1]].filter(Boolean)
+        if (!DELEGATION.test(frag) && near.some((n) => !NEGATION.test(n) && MONEY.test(n))) flags.add('possibile_valutazione')
+      }
+    }
   }
 
   // Qualsiasi flag critico → NON far uscire l'impegno: redigi la risposta e passa a umano.
@@ -201,7 +232,8 @@ export function guardrails(result) {
 }
 
 // Avvolge il testo del cliente in un delimitatore esplicito: input NON fidato, mai istruzioni.
-const wrapUntrusted = (t) => `<messaggio_cliente>\n${t || ''}\n</messaggio_cliente>`
+// Il testo viene sanificato dai tag stessi → il cliente non può "chiudere" il delimitatore (breakout).
+const wrapUntrusted = (t) => `<messaggio_cliente>\n${String(t || '').replace(/<\/?\s*messaggio_cliente[^>]*>/gi, '')}\n</messaggio_cliente>`
 
 // ---- Chiamata al cervello (Anthropic Messages API) ----
 export async function decideReply({ message, history = [], catalog = [], state = 'AI_ATTIVA', apiKey, model = DEFAULT_MODEL, now, channel = null, channelPolicy = '', timeoutMs = 25000 }) {

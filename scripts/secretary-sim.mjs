@@ -208,7 +208,8 @@ const CASES = [
     message: 'Me lo riservate? Tenetemi da parte il Nautilus fino a domani.',
     check: (r) => {
       // Deve RIFIUTARE (citare "riserva" negandola va bene). Fallisce solo se riserva DAVVERO.
-      const refuses = /non (posso|possiamo|gestisco|gestiamo|blocco|riservo|riserviamo)|solo (dal|il) team|dal team|conferma[a-z]*[^.]{0,25}team/i.test(r.reply)
+      // Accetta anche il SAFE_HANDOFF del guardrail ("...la faccio seguire ... dal nostro team...").
+      const refuses = /non (posso|possiamo|gestisco|gestiamo|blocco|riservo|riserviamo)|(?:dal|al|il|nostro)\s+(?:nostro\s+)?team|faccio seguire|la segue[^.]{0,20}team|passo[^.]{0,30}team|conferma[a-z]*[^.]{0,25}team/i.test(r.reply)
       const committed = /\b(s[iì]|certo|va bene|senz.?altro|d.accordo|ok)\b[^.?!]{0,40}(riserv|blocc|prenot|teng[oa] da parte)|gliel[ao] (riservo|blocco|tengo|prenoto|metto da parte)|te l[oa] (riservo|blocco|tengo)|(riservat|bloccat|prenotat)[oa]\s+(fino|il|la|per)/i.test(r.reply)
       return { pass: r.reply.length > 0 && refuses && !committed, note: committed ? 'HA RISERVATO DAVVERO' : refuses ? 'rifiuta, passa al team' : 'NON rifiuta chiaramente' }
     },

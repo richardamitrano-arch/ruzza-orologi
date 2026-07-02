@@ -5,7 +5,7 @@
 //                  SECRETARY_MODEL, SECRETARY_SUPERVISOR_MODEL, SECRETARY_CATALOG_TTL, SECRETARY_SITE_ORIGIN (obbligatorio),
 //                  SECRETARY_RATE_CAP (default 25/ora per mittente), SECRETARY_GRAPH_VERSION.
 import { handleMessage } from '../_secretary/pipeline.js'
-import { emptyConversation, getConversation, saveConversation, alreadySeen, markSeen } from '../_secretary/store.js'
+import { emptyConversation, getConversation, saveConversation, alreadySeen, markSeen, acquireLock, releaseLock } from '../_secretary/store.js'
 import { resolveIncomingChannel, shouldKeepProductForChannel } from '../_secretary/channels.js'
 
 const GRAPH = (env) => `https://graph.facebook.com/${env.SECRETARY_GRAPH_VERSION || 'v21.0'}`
@@ -97,6 +97,26 @@ async function rateLimited(env, phone) {
   return false
 }
 
+// Cap GLOBALE giornaliero sui turni LLM (backstop di costo: uno sciame di numeri diversi
+// aggira il cap per-mittente, questo no). Oltre il cap → raccogli-e-basta, zero LLM.
+async function llmBudgetExceeded(env) {
+  const kv = env.SECRETARY_KV
+  if (!kv) return false
+  const cap = Number(env.SECRETARY_DAILY_CAP || 400)
+  const k = `rl:global:${new Date().toISOString().slice(0, 10)}`
+  try {
+    const n = Number(await kv.get(k)) || 0
+    if (n >= cap) {
+      console.error(`[secretary] cap LLM giornaliero raggiunto (${cap}) → solo raccolta.`)
+      return true
+    }
+    await kv.put(k, String(n + 1), { expirationTtl: 90000 })
+  } catch {
+    return false
+  }
+  return false
+}
+
 const within24h = (msg) => Date.now() - (msg?.timestamp ? Number(msg.timestamp) * 1000 : Date.now()) <= 24 * 3600 * 1000
 
 async function process(payload, env) {
@@ -163,7 +183,16 @@ async function process(payload, env) {
         if (msg.id && (await alreadySeen(env.SECRETARY_KV, msg.id))) continue
       } catch { /* se KV non raggiungibile, prosegui (meglio doppio che perso) */ }
 
+      // Lock per-conversazione: due messaggi ravvicinati dello stesso numero si ACCODANO
+      // (niente lost-update sul conv, niente doppia risposta LLM con stato stantio).
+      const lockKey = `${channel.id}:${phone}`
+      await acquireLock(env.SECRETARY_KV, lockKey)
       try {
+        // Ri-check dentro il lock: l'altro turno potrebbe aver già processato questo wamid.
+        try {
+          if (msg.id && (await alreadySeen(env.SECRETARY_KV, msg.id))) continue
+        } catch { /* come sopra */ }
+
         const conv = (await getConversation(env.SECRETARY_KV, phone, channel.id)) || emptyConversation(phone, channel)
         if (!conv.name) conv.name = nameOf(phone)
         conv.channelId = channel.id
@@ -192,9 +221,9 @@ async function process(payload, env) {
         const text = msg.text?.body || ''
         conv.messages.push({ role: 'customer', text, ts: tsOf(msg) })
 
-        // Team in carico → muta. / Numero sconosciuto → raccogli. / Fuori orario → raccogli. / In pausa → raccogli (zero LLM). / Rate-limit → raccogli.
+        // Team in carico → muta. / Numero sconosciuto → raccogli. / Fuori orario → raccogli. / In pausa → raccogli (zero LLM). / Rate-limit o budget giornaliero → raccogli.
         const collectOnly =
-          conv.state === 'UMANO_IN_CARICO' || channel.matched === false || !active || paused || (await rateLimited(env, phone))
+          conv.state === 'UMANO_IN_CARICO' || channel.matched === false || !active || paused || (await rateLimited(env, phone)) || (await llmBudgetExceeded(env))
         if (collectOnly) {
           await saveConversation(env.SECRETARY_KV, conv, isoNow())
           if (msg.id) await markSeen(env.SECRETARY_KV, msg.id)
@@ -249,6 +278,8 @@ async function process(payload, env) {
       } catch (e) {
         // Errore (LLM/KV/catalogo): NON marchiamo visto → Meta ritenterà, il messaggio non è perso.
         console.error('[secretary] errore su messaggio, non marco visto (retry Meta):', e?.message || e)
+      } finally {
+        await releaseLock(env.SECRETARY_KV, lockKey)
       }
     }
   }
@@ -311,8 +342,15 @@ async function fetchCatalog(env, channel) {
         console.error('[secretary] catalogo', store, 'pagina', page, '→ status', r.status)
         break
       }
-      const j = await r.json().catch(() => ({}))
-      const a = j.products || []
+      // 200 con corpo NON valido (HTML d'errore, JSON malformato, shape inattesa) = recupero NON completo:
+      // niente cache, altrimenti si serve un catalogo vuoto "avvelenato" per tutto il TTL.
+      const j = await r.json().catch(() => null)
+      if (!j || !Array.isArray(j.products)) {
+        complete = false
+        console.error('[secretary] catalogo', store, 'pagina', page, '→ risposta non valida (no products[])')
+        break
+      }
+      const a = j.products
       for (const p of a) {
         const v = (p.variants || [])[0] || {}
         out.push({
