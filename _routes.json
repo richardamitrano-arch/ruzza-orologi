@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/contact",
+    "/pages/contact",
+    "/pages/privacy-policy"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/media/*",
+    "/favicon.svg",
+    "/robots.txt",
+    "/sitemap.xml"
+  ]
+}
