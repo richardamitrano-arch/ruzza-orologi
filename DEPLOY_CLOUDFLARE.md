@@ -1,5 +1,15 @@
 # Deploy della Segretaria su Cloudflare Pages — runbook
 
+> ✅ **STATO 2026-07-05 — FASE A GIÀ ESEGUITA E VERIFICATA LIVE (da Claude via wrangler).**
+> Progetto Pages **`ruzza-segretaria`** · URL **https://ruzza-segretaria.pages.dev** · KV `SECRETARY_KV` bindato ·
+> segreti `ANTHROPIC_API_KEY` + `SECRETARY_DASHBOARD_TOKEN` impostati (cifrati) · `SECRETARY_PAUSED=true`.
+> Verificato: catalogo→prodotti veri, cockpit `secretary-state` col token→200/KV, webhook fail-closed (GET 403 / POST 503).
+> **Cockpit:** `https://ruzza-segretaria.pages.dev/dashboard-segretaria?key=<SECRETARY_DASHBOARD_TOKEN>`
+> (il token è in `~/.ruzza_secretary_dashboard_token`). **Resta solo la FASE B** (numeri WhatsApp, sotto).
+> Per aggiornare il deploy dopo modifiche: `npm run build:cloudflare && npx wrangler pages deploy --commit-dirty=true`.
+
+
+
 La segretaria è fatta di **Cloudflare Pages Functions** (`functions/api/*`). Questo è il pezzo che le fa
 "girare" davvero: GitHub `main` è solo il backup del codice, non esegue niente. Qui la mettiamo online.
 

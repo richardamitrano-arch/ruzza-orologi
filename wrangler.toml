@@ -1,0 +1,21 @@
+# Config deploy Cloudflare Pages — Segretaria WhatsApp Ruzza.
+# I SEGRETI (ANTHROPIC_API_KEY, WHATSAPP_TOKEN, WHATSAPP_APP_SECRET, SECRETARY_DASHBOARD_TOKEN)
+# NON stanno qui: si impostano cifrati con `wrangler pages secret put ... --project-name ruzza-segretaria`.
+name = "ruzza-segretaria"
+pages_build_output_dir = "dist-cloudflare"
+compatibility_date = "2024-11-01"
+
+[[kv_namespaces]]
+binding = "SECRETARY_KV"
+id = "c80c85a17ab549fcaa9d48a91ed85a04"
+
+[vars]
+SECRETARY_SITE_ORIGIN = "https://ruzza-segretaria.pages.dev"
+SECRETARY_MODEL = "claude-sonnet-5"
+SECRETARY_SUPERVISOR_MODEL = "claude-haiku-4-5-20251001"
+SECRETARY_ACTIVE_HOURS = "19:00-10:00"
+SECRETARY_TZ = "Europe/Rome"
+SECRETARY_CATALOG_TTL = "600"
+SECRETARY_RATE_CAP = "25"
+SECRETARY_DAILY_CAP = "400"
+SECRETARY_PAUSED = "true"
