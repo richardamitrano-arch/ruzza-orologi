@@ -1,0 +1,1 @@
+const r="";function e(t=window.location.pathname){return t.replace(/\/+$/,"")||"/"}function n(t){return t.startsWith("/")?`${r}${t}`||"/":t}function s(t){return n(`/products/${encodeURIComponent(t)}`)}function o(t){return n(t.startsWith("/")?t:`/${t}`)}function i(t){return t.startsWith("/")||t.startsWith("#")}export{n as a,e as b,i,o as m,s as p};
