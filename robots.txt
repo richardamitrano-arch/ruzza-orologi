@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ruzzaorologi.com/sitemap.xml
+Sitemap: https://ruzzaorologi.com/cultura/sitemap.xml
