@@ -176,6 +176,63 @@
         "/\\bseriale\\b|\\bnumero\\s+di\\s+serie\\b|\\bcome\\s+si\\s+data\\b/i",
         "/\\boyster\\b(?!\\s*perpetual)/i"
       ]
+    },
+    {
+      "numero": 4,
+      "data": "2026-08-04",
+      "id": "orologi:10308319904085",
+      "handle": "audemars-piguet-royal-oak-concept-flying-tourbillon-gmt-26589io-2018",
+      "brand": "Audemars Piguet",
+      "titolo": "L'Audemars Piguet Royal Oak del 2018",
+      "titoloTesto": "L'Audemars Piguet Royal Oak del 2018",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_2182.jpg?v=1765384682",
+      "pezzo": "Audemars Piguet Royal Oak Concept Flying Tourbillon Gmt 26589IO 2018",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Nata nel 2002 per i 30 anni del Royal Oak: è il laboratorio della casa, dove finiscono materiali e complicazioni sperimentali — alacrite, carbonio forgiato, tourbillon volanti.",
+      "storiaTitolo": "Audemars Piguet Royal Oak Concept",
+      "dettaglio": "Brevettato da Abraham-Louis Breguet nel 1801: la gabbia che contiene bilanciere e scappamento ruota su sé stessa per compensare l'effetto della gravità. Nato per gli orologi da tasca, che stavano sempre verticali; oggi è soprattutto una dimostrazione di alta orologeria.",
+      "dettaglioTitolo": "Il tourbillon",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "Erenza modello: 26589IO.OO.D010CA.01"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2018"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Ceramica nera e titanio"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Scheletrato"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "Manuale"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "Caucciù nero"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_2188.jpg?v=1765384679",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20L'Audemars%20Piguet%20Royal%20Oak%20del%202018.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Audemars Piguet Royal Oak del 2018: cassa in ceramica nera e titanio, quadrante scheletrato, bracciale caucciù nero.",
+        "Nata nel 2002 per i 30 anni del Royal Oak: è il laboratorio della casa, dove finiscono materiali e complicazioni sperimentali — alacrite, carbonio forgiato, tourbillon volanti.",
+        "Brevettato da Abraham-Louis Breguet nel 1801: la gabbia che contiene bilanciere e scappamento ruota su sé stessa per compensare l'effetto della gravità. Nato per gli orologi da tasca, che stavano sempre verticali; oggi è soprattutto una dimostrazione di alta orologeria.",
+        "Questo esemplare è in boutique. € 95.000."
+      ],
+      "prezzo": "€ 95.000",
+      "racconti": [
+        "/\\btourbillon\\b/i",
+        "/\\bconcept\\b.*\\baudemars\\b|\\baudemars\\b.*\\bconcept\\b/i"
+      ]
     }
   ]
 }
