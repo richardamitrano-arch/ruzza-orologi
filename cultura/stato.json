@@ -282,6 +282,65 @@
         "/\\bfull\\s*set\\b|\\bcosa\\s+comprende\\b|\\bche\\s+corredo\\b/i",
         "/\\bnautilus\\b/i"
       ]
+    },
+    {
+      "numero": 6,
+      "data": "2026-08-06",
+      "id": "orologi:11445372420437",
+      "handle": "rolex-datejust-31mm-boy-6827-jubilee-1985-paper-rolex-ita-no-box",
+      "brand": "Rolex",
+      "titolo": "Il Datejust che tutti chiamano Boy",
+      "titoloTesto": "Il Datejust che tutti chiamano ",
+      "titoloCorsivo": "Boy",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5562_eb80b817-f237-4d6b-9a6b-f3d6a16dcf09.jpg?v=1784215135",
+      "pezzo": "Rolex Datejust 31mm Boy 6827 Jubilèe 1985 Paper Rolex Ita No Box",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Misura di mezzo fra il 36 mm da uomo e il 26 mm da donna: nel gergo del mercato è il \"boy size\", e oggi lo portano tutti.",
+      "storia": "Del 1945, per i quarant'anni della casa: è il primo cronometro automatico da polso con la data a finestrella. La lente sul vetro — il \"Cyclops\" — arriva nel 1953.",
+      "storiaTitolo": "Rolex Datejust",
+      "dettaglio": "Cinque maglie, morbido e più elegante dell'Oyster. Nasce nel 1945 per il Datejust, presentato per il quarantesimo anniversario di Rolex — da lì «Jubilee», giubileo.",
+      "dettaglioTitolo": "Il bracciale Jubilee",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "6827"
+        },
+        {
+          "voce": "Anno",
+          "valore": "1985"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Oro giallo 18 carati"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "2135"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Ottime"
+        },
+        {
+          "voce": "Vetro",
+          "valore": "Plexiglass"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5563_0a128037-0bff-4e01-81f8-910e83035394.jpg?v=1784215135",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Datejust%20che%20tutti%20chiamano%20Boy.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Datejust del 1985: cassa in oro giallo 18 carati.",
+        "Nessuno lo chiama con la referenza: per tutti è «Boy». Misura di mezzo fra il 36 mm da uomo e il 26 mm da donna: nel gergo del mercato è il «boy size», e oggi lo portano tutti.",
+        "Del 1945, per i quarant'anni della casa: è il primo cronometro automatico da polso con la data a finestrella. La lente sul vetro — il «Cyclops» — arriva nel 1953.",
+        "Cinque maglie, morbido e più elegante dell'Oyster. Nasce nel 1945 per il Datejust, presentato per il quarantesimo anniversario di Rolex — da lì «Jubilee», giubileo.",
+        "Questo esemplare è in condizioni ottime. € 10.500."
+      ],
+      "prezzo": "€ 10.500",
+      "racconti": [
+        "/\\bboy\\b/i",
+        "/\\bjubil[eè]e?\\b/i",
+        "/\\bdatejust\\b/i"
+      ]
     }
   ]
 }
