@@ -341,6 +341,63 @@
         "/\\bjubil[eè]e?\\b/i",
         "/\\bdatejust\\b/i"
       ]
+    },
+    {
+      "numero": 7,
+      "data": "2026-08-07",
+      "id": "orologi:9704914452821",
+      "handle": "bulgari-octo-finissimo-perpetual-calendar-platinum-limited-edition",
+      "brand": "Bulgari",
+      "titolo": "Il Bulgari Octo del 2023",
+      "titoloTesto": "Il Bulgari Octo del 2023",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_0717.jpg?v=1733329152",
+      "pezzo": "Bulgari Octo Finissimo Perpetual Calendar Platinum limited edition",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "La linea con cui Bulgari ha battuto più volte il record dell'orologio più sottile al mondo: geometria ottagonale, spessori da pochi millimetri.",
+      "storiaTitolo": "Bulgari Octo Finissimo",
+      "dettaglio": "L'annuale distingue da solo i mesi da 30 e 31 giorni: va corretto una volta l'anno, a marzo. Il perpetuo sa anche degli anni bisestili e non va corretto fino al 2100. È la complicazione che più fa salire il prezzo dopo il tourbillon.",
+      "dettaglioTitolo": "Calendario annuale e perpetuo",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "Erimento: BGO 40P QPXT"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2023"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "40 mm in Platino"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Blu"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "In pelle blu con chiusura a deployantèe"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Come nuovo"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_0718.jpg?v=1733329151",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Bulgari%20Octo%20del%202023.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Bulgari Octo del 2023: cassa da 40 mm in Platino, quadrante blu, bracciale in pelle blu con chiusura a deployantèe.",
+        "La linea con cui Bulgari ha battuto più volte il record dell'orologio più sottile al mondo: geometria ottagonale, spessori da pochi millimetri.",
+        "L'annuale distingue da solo i mesi da 30 e 31 giorni: va corretto una volta l'anno, a marzo. Il perpetuo sa anche degli anni bisestili e non va corretto fino al 2100. È la complicazione che più fa salire il prezzo dopo il tourbillon.",
+        "Questo esemplare è in condizioni come nuovo. € 70.000."
+      ],
+      "prezzo": "€ 70.000",
+      "racconti": [
+        "/\\bcalendario\\s+(?:perpetuo|annuale)\\b|\\bperpetual\\s+calendar\\b/i",
+        "/\\bocto\\b/i"
+      ]
     }
   ]
 }
