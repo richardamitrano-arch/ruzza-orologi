@@ -1,5 +1,56 @@
 [
   {
+    "numero": 8,
+    "data": "2026-08-08",
+    "titolo": "Il Patek Philippe Aquanaut del 2023",
+    "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3930.jpg?v=1781085727",
+    "pezzo": "Patek Philippe Aquanaut 5968G 2023 green 2023 Ita",
+    "occhiello": "Il pezzo di oggi",
+    "perche": null,
+    "storia": "Del 1997: la stessa idea del Nautilus, ma per una generazione più giovane — cassa arrotondata e cinturino in materiale composito, che allora era una scelta coraggiosa per Patek.",
+    "titoloTesto": "Il Patek Philippe Aquanaut del 2023",
+    "titoloCorsivo": null,
+    "storiaTitolo": "Patek Philippe Aquanaut",
+    "dettaglio": "Quante ore cammina l'orologio senza essere caricato o portato. Rolex sta intorno alle 70 ore sui calibri nuovi: vuol dire che si può togliere il venerdì sera e ritrovarlo in orario il lunedì.",
+    "dettaglioTitolo": "La riserva di carica",
+    "scheda": [
+      {
+        "voce": "Referenza",
+        "valore": "Erenza: 5968G-010"
+      },
+      {
+        "voce": "Anno",
+        "valore": "2023"
+      },
+      {
+        "voce": "Misura",
+        "valore": "42 mm"
+      },
+      {
+        "voce": "Cassa",
+        "valore": "Oro bianco 18 carati"
+      },
+      {
+        "voce": "Quadrante",
+        "valore": "Verde kaki"
+      },
+      {
+        "voce": "Movimento",
+        "valore": "Calibro automatico CH 28-520 C"
+      }
+    ],
+    "prezzo": "€ 125.000",
+    "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3931.jpg?v=1781085722",
+    "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Patek%20Philippe%20Aquanaut%20del%202023.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+    "paragrafi": [
+      "Un Patek Philippe Aquanaut del 2023: cassa da 42 mm in oro bianco 18 carati, quadrante verde kaki, bracciale cinturino in materiale composito verde.",
+      "Del 1997: la stessa idea del Nautilus, ma per una generazione più giovane — cassa arrotondata e cinturino in materiale composito, che allora era una scelta coraggiosa per Patek.",
+      "Quante ore cammina l'orologio senza essere caricato o portato. Rolex sta intorno alle 70 ore sui calibri nuovi: vuol dire che si può togliere il venerdì sera e ritrovarlo in orario il lunedì.",
+      "Questo esemplare arriva con sì (Italia). € 125.000."
+    ],
+    "link": "https://ruzzaorologi.com/cultura/2026-08-08"
+  },
+  {
     "numero": 7,
     "data": "2026-08-07",
     "titolo": "Il Bulgari Octo del 2023",
