@@ -455,6 +455,55 @@
         "/\\briserva\\s+di\\s+carica\\b/i",
         "/\\baquanaut\\b/i"
       ]
+    },
+    {
+      "numero": 9,
+      "data": "2026-08-09",
+      "id": "orologi:9901696221525",
+      "handle": "rolex-submariner-date-1680-tiffany-co-1978",
+      "brand": "Rolex",
+      "titolo": "Il Submariner che tutti chiamano Tiffany",
+      "titoloTesto": "Il Submariner che tutti chiamano ",
+      "titoloCorsivo": "Tiffany",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_9380_60d9364a-e613-424a-8966-6636da614f52.jpg?v=1745310055",
+      "pezzo": "Rolex Submariner Date 1680 «Tiffany&Co.» 1978",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Il tono di azzurro del gioielliere newyorkese. Attenzione: alcuni pezzi storici hanno davvero la firma \"Tiffany & Co.\" sul quadrante perché venduti da loro.",
+      "storia": "Presentato nel 1953: il primo subacqueo impermeabile fino a 100 metri, con ghiera girevole per contare il tempo di immersione. È il modello che ha definito l'idea stessa di orologio sportivo.",
+      "storiaTitolo": "Rolex Submariner",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "1680"
+        },
+        {
+          "voce": "Anno",
+          "valore": "1978"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Acciaio"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Ottimo"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_9381_cc610e0b-fda2-4eac-b50e-f90fd73ff8e0.jpg?v=1745310055",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Submariner%20che%20tutti%20chiamano%20Tiffany.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Submariner del 1978: cassa in acciaio.",
+        "Nel mercato ha un nome suo: «Tiffany». Il tono di azzurro del gioielliere newyorkese. Attenzione: alcuni pezzi storici hanno davvero la firma «Tiffany & Co.» sul quadrante perché venduti da loro.",
+        "Presentato nel 1953: il primo subacqueo impermeabile fino a 100 metri, con ghiera girevole per contare il tempo di immersione. È il modello che ha definito l'idea stessa di orologio sportivo.",
+        "Questo esemplare è in condizioni ottimo. € 35.000."
+      ],
+      "prezzo": "€ 35.000",
+      "racconti": [
+        "/\\btiffany\\b/i",
+        "/\\bsubmariner\\b/i"
+      ]
     }
   ]
 }
