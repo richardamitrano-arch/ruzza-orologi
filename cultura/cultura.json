@@ -1,5 +1,56 @@
 [
   {
+    "numero": 10,
+    "data": "2026-08-10",
+    "titolo": "L'Audemars Piguet Royal Oak del 2023",
+    "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_9855_13ac7730-567e-4575-8d39-80ce0d28f8ff.jpg?v=1760712022",
+    "pezzo": "Audemars Piguet Royal Oak Offshore Chronograph 26420CE Full Set 2023",
+    "occhiello": "Il pezzo di oggi",
+    "perche": null,
+    "storia": "Del 1993, disegnato da Emmanuel Gueit quando aveva ventidue anni: 42 mm quando il Royal Oak ne faceva 39, guarnizioni a vista, peso da carro armato. Alla presentazione fu criticato e ribattezzato «The Beast»; oggi è una delle linee più vendute della maison.",
+    "titoloTesto": "L'Audemars Piguet Royal Oak del 2023",
+    "titoloCorsivo": null,
+    "storiaTitolo": "Audemars Piguet Royal Oak Offshore",
+    "dettaglio": "La griglia di piccoli quadrati del Royal Oak, ottenuta con una macchina a pantografo di inizio Novecento. Sulle versioni «Grande Tapisserie» i quadrati sono più larghi.",
+    "dettaglioTitolo": "Il quadrante tapisserie",
+    "scheda": [
+      {
+        "voce": "Referenza",
+        "valore": "Erence: 26420CE.oo.A043VE.01"
+      },
+      {
+        "voce": "Anno",
+        "valore": "2023"
+      },
+      {
+        "voce": "Misura",
+        "valore": "Cassa: 43mm"
+      },
+      {
+        "voce": "Cassa",
+        "valore": "Ceramica nera"
+      },
+      {
+        "voce": "Quadrante",
+        "valore": "Blu \"méga Tapisserie\" con lancette e indici luminescenti"
+      },
+      {
+        "voce": "Movimento",
+        "valore": "Automatico, ap Calibro 4401 Flyback Chronograph"
+      }
+    ],
+    "prezzo": "€ 49.000",
+    "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_9859.jpg?v=1760712022",
+    "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20L'Audemars%20Piguet%20Royal%20Oak%20del%202023.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+    "paragrafi": [
+      "Un Audemars Piguet Royal Oak del 2023: cassa da cassa: 43mm in ceramica nera, quadrante blu «méga Tapisserie» con lancette e indici luminescenti.",
+      "Del 1993, disegnato da Emmanuel Gueit quando aveva ventidue anni: 42 mm quando il Royal Oak ne faceva 39, guarnizioni a vista, peso da carro armato. Alla presentazione fu criticato e ribattezzato «The Beast»; oggi è una delle linee più vendute della maison.",
+      "La griglia di piccoli quadrati del Royal Oak, ottenuta con una macchina a pantografo di inizio Novecento. Sulle versioni «Grande Tapisserie» i quadrati sono più larghi.",
+      "Questo esemplare è full set ed è in condizioni come nuovo. € 49.000."
+    ],
+    "link": "https://ruzzaorologi.com/cultura/2026-08-10"
+  },
+  {
     "numero": 9,
     "data": "2026-08-09",
     "titolo": "Il Submariner che tutti chiamano Tiffany",
