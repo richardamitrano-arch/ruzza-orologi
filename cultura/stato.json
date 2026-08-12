@@ -598,6 +598,45 @@
         "/\\bn\\.?o\\.?s\\b|\\bnew\\s+old\\s+stock\\b|\\bmai\\s+indossato\\b/i",
         "/\\bpasha\\b/i"
       ]
+    },
+    {
+      "numero": 12,
+      "data": "2026-08-12",
+      "id": "orologi:7730364842230",
+      "handle": "rolex-daytona-eye-of-the-tiger-116588tbr-2021-stickers",
+      "brand": "Rolex",
+      "titolo": "Il Daytona che tutti chiamano Eye Of The Tiger",
+      "titoloTesto": "Il Daytona che tutti chiamano ",
+      "titoloCorsivo": "Eye Of The Tiger",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/products/IMG_3590_03cdf85a-d549-4a5a-ad8c-099d66a604ed.jpg?v=1655826922",
+      "pezzo": "Rolex Daytona «Eye Of The Tiger» 116588TBR 2021 Stickers",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Il quadrante è in vera pietra occhio di tigre.",
+      "storia": null,
+      "storiaTitolo": null,
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "116588TBR"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2021"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/products/IMG_3591.jpg?v=1655826923",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Daytona%20che%20tutti%20chiamano%20Eye%20Of%20The%20Tiger.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Daytona del 2021.",
+        "Chi lo conosce lo chiama «Eye Of The Tiger». Il quadrante è in vera pietra occhio di tigre.",
+        "Questo esemplare è in boutique. € 210.000."
+      ],
+      "prezzo": "€ 210.000",
+      "racconti": [
+        "/\\beye\\s*of\\s*the\\s*tiger\\b/i"
+      ]
     }
   ]
 }
