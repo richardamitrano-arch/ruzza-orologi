@@ -691,6 +691,53 @@
       "racconti": [
         "/\\bflyback\\b|\\brattrapante\\b|\\bsdoppiante\\b/i"
       ]
+    },
+    {
+      "numero": 14,
+      "data": "2026-08-14",
+      "id": "orologi:10139892056405",
+      "handle": "richard-mille-chronograph-rm65-01-2022-50mm-rose-gold",
+      "brand": "Richard Mille",
+      "titolo": "Il Richard Mille Chronograph RM65-01 del 2022",
+      "titoloTesto": "Il Richard Mille Chronograph RM65-01 del 2022",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7825_085fd89d-a134-4f5a-a3de-1b8f57a364c2.jpg?v=1757585949",
+      "pezzo": "Richard Mille Chronograph RM65-01 2022 50mm Rose Gold",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Dal 2001: casse in carbonio e titanio, movimenti scheletrati costruiti come telai di Formula 1. Sono fra gli orologi più leggeri e più costosi al mondo, e nascono per essere portati mentre si fa sport, non messi in cassaforte.",
+      "storiaTitolo": "Richard Mille",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "Erenza: 65-01"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2022"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Scheletrato"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "Rosso"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7826_1046d3a9-2b3b-4f22-bff1-73e2e6cc1cd1.jpg?v=1757585949",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Richard%20Mille%20Chronograph%20RM65-01%20del%202022.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Richard Mille Chronograph RM65-01 del 2022: quadrante scheletrato, bracciale rosso.",
+        "Dal 2001: casse in carbonio e titanio, movimenti scheletrati costruiti come telai di Formula 1. Sono fra gli orologi più leggeri e più costosi al mondo, e nascono per essere portati mentre si fa sport, non messi in cassaforte.",
+        "Questo esemplare è in boutique. € 290.000."
+      ],
+      "prezzo": "€ 290.000",
+      "racconti": [
+        "/\\brichard\\s*mille\\b/i"
+      ]
     }
   ]
 }
