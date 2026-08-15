@@ -738,6 +738,47 @@
       "racconti": [
         "/\\brichard\\s*mille\\b/i"
       ]
+    },
+    {
+      "numero": 15,
+      "data": "2026-08-15",
+      "id": "orologi:9019008024917",
+      "handle": "rolex-sky-dweller-326259tbr-new-2022",
+      "brand": "Rolex",
+      "titolo": "Il Rolex Sky-Dweller del 2022",
+      "titoloTesto": "Il Rolex Sky-Dweller del 2022",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7146.jpg?v=1710867029",
+      "pezzo": "Rolex Sky-Dweller 326259TBR new 2022",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 2012: doppio fuso orario e calendario annuale, che distingue da solo i mesi da 30 e 31 giorni. Si regola dalla ghiera, la Ring Command.",
+      "storiaTitolo": "Rolex Sky-Dweller",
+      "dettaglio": "Sono fette di meteorite ferrosa, di solito la Gibeon trovata in Namibia. Il disegno che si vede — le figure di Widmanstätten — si forma raffreddandosi nello spazio in milioni di anni: per questo non ce ne sono due uguali.",
+      "dettaglioTitolo": "I quadranti in meteorite",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "326259TBR"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2022"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7147.jpg?v=1710867028",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Rolex%20Sky-Dweller%20del%202022.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Sky-Dweller del 2022.",
+        "Del 2012: doppio fuso orario e calendario annuale, che distingue da solo i mesi da 30 e 31 giorni. Si regola dalla ghiera, la Ring Command.",
+        "Sono fette di meteorite ferrosa, di solito la Gibeon trovata in Namibia. Il disegno che si vede — le figure di Widmanstätten — si forma raffreddandosi nello spazio in milioni di anni: per questo non ce ne sono due uguali.",
+        "Questo esemplare è in boutique. € 185.000."
+      ],
+      "prezzo": "€ 185.000",
+      "racconti": [
+        "/\\bmeteorit\\w*/i",
+        "/\\bsky[\\s-]?dweller\\b/i"
+      ]
     }
   ]
 }
