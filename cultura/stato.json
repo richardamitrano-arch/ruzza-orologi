@@ -818,6 +818,63 @@
       "racconti": [
         "/\\b2\\.?55\\b|\\bchanel\\s*classic\\b/i"
       ]
+    },
+    {
+      "numero": 17,
+      "data": "2026-08-17",
+      "id": "orologi:10276720542037",
+      "handle": "vacheron-constantin-overseas-35mm-42050-blue-dial-only-watch",
+      "brand": "Vacheron Constantin",
+      "titolo": "Il Vacheron Constantin Overseas del 2000",
+      "titoloTesto": "Il Vacheron Constantin Overseas del 2000",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_2046.jpg?v=1763573597",
+      "pezzo": "Vacheron Constantin Overseas 35mm 42050 Blue Dial only watch",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Lo sportivo di Vacheron: la ghiera richiama la croce di Malta, simbolo della maison, e i bracciali si cambiano senza attrezzi.",
+      "storiaTitolo": "Vacheron Constantin Overseas",
+      "dettaglio": "Il COSC è l'istituto svizzero che certifica i movimenti: per passare devono stare fra −4 e +6 secondi al giorno. Solo un movimento certificato può portare la scritta «Chronometer» sul quadrante.",
+      "dettaglioTitolo": "Cronometro COSC",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "42050"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2000"
+        },
+        {
+          "voce": "Misura",
+          "valore": "35mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "In acciaio"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Blu"
+        },
+        {
+          "voce": "Vetro",
+          "valore": "Zaffiro"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_2047.jpg?v=1763573598",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Vacheron%20Constantin%20Overseas%20del%202000.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Vacheron Constantin Overseas del 2000: cassa da 35mm in in acciaio, quadrante blu.",
+        "Lo sportivo di Vacheron: la ghiera richiama la croce di Malta, simbolo della maison, e i bracciali si cambiano senza attrezzi.",
+        "Il COSC è l'istituto svizzero che certifica i movimenti: per passare devono stare fra −4 e +6 secondi al giorno. Solo un movimento certificato può portare la scritta «Chronometer» sul quadrante.",
+        "Questo esemplare è in boutique. € 10.500."
+      ],
+      "prezzo": "€ 10.500",
+      "racconti": [
+        "/\\bcosc\\b|\\bcronometro\\s+certificat\\w*/i",
+        "/\\boverseas\\b/i"
+      ]
     }
   ]
 }
