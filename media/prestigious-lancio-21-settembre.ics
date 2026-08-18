@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ruzza Orologi//Prestigious//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:prestigious-lancio-2026-09-21@ruzzaorologi.com
+DTSTAMP:20260817T200000Z
+DTSTART:20260921T120000Z
+DTEND:20260921T130000Z
+SUMMARY:Prestigious · Lorenzo Ruzza — apertura ordini
+DESCRIPTION:I tre Elixir Prestigious (Turchese\, Lapislazzuli\, Onice) escono il 21 settembre 2026 alle 14:00 su ruzzaorologi.com.
+URL:https://ruzzaorologi.com/#profumi
+LOCATION:ruzzaorologi.com
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Prestigious: apertura ordini tra un'ora
+END:VALARM
+END:VEVENT
+END:VCALENDAR
