@@ -1040,6 +1040,59 @@
       "racconti": [
         "/\\bcalatrava\\b/i"
       ]
+    },
+    {
+      "numero": 21,
+      "data": "2026-08-21",
+      "id": "orologi:11298068267349",
+      "handle": "rolex-day-date-president-18238-black-dial-onyx-diamond-index-1994-no-box-rolex",
+      "brand": "Rolex",
+      "titolo": "Il Rolex Day-Date del 1994",
+      "titoloTesto": "Il Rolex Day-Date del 1994",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_2167_77344afd-7f5d-4ea3-985f-bbe75fe0fca4.jpg?v=1778664944",
+      "pezzo": "Rolex Day-Date «President» 18238 Black Dial Onyx diamond index 1994 no box rolex",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 1956: il primo orologio a mostrare il giorno della settimana per esteso, e solo in oro o platino. Il bracciale disegnato per lui si chiama President, e il soprannome è rimasto perché lo portavano diversi presidenti americani.",
+      "storiaTitolo": "Rolex Day-Date",
+      "dettaglio": "Tre maglie semicircolari, massicce, disegnate nel 1956 per il Day-Date e montate solo su oro o platino. Il nome nasce dall'uso: lo portavano diversi presidenti americani, e Rolex lo ha registrato così.",
+      "dettaglioTitolo": "Il bracciale President",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "18238"
+        },
+        {
+          "voce": "Anno",
+          "valore": "1994"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Oro giallo"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Ottime"
+        },
+        {
+          "voce": "Vetro",
+          "valore": "Zaffiro"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_2168_17476e93-f9ae-4548-882d-18b8c649dfc1.jpg?v=1778664945",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Rolex%20Day-Date%20del%201994.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Day-Date del 1994: cassa in oro giallo.",
+        "Del 1956: il primo orologio a mostrare il giorno della settimana per esteso, e solo in oro o platino. Il bracciale disegnato per lui si chiama President, e il soprannome è rimasto perché lo portavano diversi presidenti americani.",
+        "Tre maglie semicircolari, massicce, disegnate nel 1956 per il Day-Date e montate solo su oro o platino. Il nome nasce dall'uso: lo portavano diversi presidenti americani, e Rolex lo ha registrato così.",
+        "Questo esemplare è in condizioni ottime. € 42.000."
+      ],
+      "prezzo": "€ 42.000",
+      "racconti": [
+        "/\\bbracciale\\s+president\\b|\\bpresident\\b/i",
+        "/\\bday[\\s-]?date\\b|\\bpresident\\b/i"
+      ]
     }
   ]
 }
