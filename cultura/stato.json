@@ -1134,6 +1134,51 @@
         "/\\bunidirezional\\w*|\\bghiera\\b[^.?!]{0,30}\\bun\\s+senso\\b|\\bgira\\b[^.?!]{0,20}\\bun\\s+senso\\b/i",
         "/\\bchronograph\\s*1\\b|\\bporsche\\s*design\\b/i"
       ]
+    },
+    {
+      "numero": 23,
+      "data": "2026-08-23",
+      "id": "borse:8707507388762",
+      "handle": "hermes-kelly-28-togo-retourne-orange-2023",
+      "brand": "Hermès",
+      "titolo": "La Hermès Kelly del 2023",
+      "titoloTesto": "La Hermès Kelly del 2023",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0782/8901/1034/files/ImmagineWhatsApp2024-01-16ore12.21.53_3c7d59a9.jpg?v=1705404300",
+      "pezzo": "HERMES KELLY II RETOURNE 28 TOGO ORANGE 2023",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Il modello esisteva dagli anni Trenta come Sac à dépêches. Nel 1956 Grace Kelly, ormai principessa di Monaco, la usò per nascondere la gravidanza dai fotografi: la foto fece il giro del mondo e Hermès le diede il suo nome.",
+      "storiaTitolo": "Hermès Kelly",
+      "dettaglio": "Sellier: cuciture a vista sui bordi esterni, linee rigide, aria più formale. Retourné: cucita al rovescio e poi rivoltata, quindi più morbida e arrotondata. Stessa borsa, due caratteri diversi — e la sellier costa di norma di più.",
+      "dettaglioTitolo": "Kelly sellier o retourné",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "2023"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2023"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Pelle Togo Retourne"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0782/8901/1034/files/ImmagineWhatsApp2024-01-16ore12.21.53_c0f71ef9.jpg?v=1705404300",
+      "whatsapp": "https://wa.me/393203863817?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20La%20Herm%C3%A8s%20Kelly%20del%202023.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Una Hermès Kelly del 2023: cassa in pelle Togo Retourne.",
+        "Il modello esisteva dagli anni Trenta come Sac à dépêches. Nel 1956 Grace Kelly, ormai principessa di Monaco, la usò per nascondere la gravidanza dai fotografi: la foto fece il giro del mondo e Hermès le diede il suo nome.",
+        "Sellier: cuciture a vista sui bordi esterni, linee rigide, aria più formale. Retourné: cucita al rovescio e poi rivoltata, quindi più morbida e arrotondata. Stessa borsa, due caratteri diversi — e la sellier costa di norma di più.",
+        "Questo esemplare è in boutique. Su richiesta."
+      ],
+      "prezzo": "Su richiesta",
+      "racconti": [
+        "/\\bsellier\\b|\\bretourn[eé]\\b/i",
+        "/\\bkelly\\b/i"
+      ]
     }
   ]
 }
