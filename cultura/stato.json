@@ -1236,39 +1236,326 @@
     {
       "numero": 25,
       "data": "2026-08-25",
-      "id": "orologi:8991356518741",
-      "handle": "gerald-charles-maestro-3-0-chronograph-black-new-2023",
-      "brand": "",
-      "titolo": "Il pezzo del 2023",
-      "titoloTesto": "Il pezzo del 2023",
+      "id": "orologi:9637760139605",
+      "handle": "omega-speedmaster-professional-moonwatch-albino-limited-500-pieces",
+      "brand": "Omega",
+      "titolo": "L'Omega Speedmaster del 1997",
+      "titoloTesto": "L'Omega Speedmaster del 1997",
       "titoloCorsivo": null,
-      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_6063.jpg?v=1709116732",
-      "pezzo": "Gerald Charles Maestro 3.0 Chronograph Black NEW 2023",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_8063.jpg?v=1729519960",
+      "pezzo": "Omega Speedmaster Professional Moonwatch Albino limited 500 pieces",
       "occhiello": "Il pezzo di oggi",
       "perche": null,
-      "storia": "Rolex indica un intervallo indicativo di dieci anni, ma dipende da quanto lo si porta. Due regole valgono sempre: non toccare la corona con l'orologio bagnato, e far ricontrollare le guarnizioni se si va in acqua.",
-      "storiaTitolo": "Ogni quanto si revisiona",
+      "storia": "Del 1957. La NASA lo qualificò per le missioni con equipaggio dopo prove durissime, e il 20 luglio 1969 è al polso degli astronauti dell'Apollo 11: da lì il soprannome Moonwatch.",
+      "storiaTitolo": "Omega Speedmaster",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Anno",
+          "valore": "1997"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_8064.jpg?v=1729519960",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20L'Omega%20Speedmaster%20del%201997.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Omega Speedmaster del 1997: serie limitata di 500 esemplari, quadrante albino.",
+        "Del 1957. La NASA lo qualificò per le missioni con equipaggio dopo prove durissime, e il 20 luglio 1969 è al polso degli astronauti dell'Apollo 11: da lì il soprannome Moonwatch.",
+        "Questo esemplare è in boutique. € 25.000."
+      ],
+      "prezzo": "€ 25.000",
+      "racconti": [
+        "/\\bspeedmaster\\b/i"
+      ]
+    },
+    {
+      "numero": 26,
+      "data": "2026-08-26",
+      "id": "orologi:9491534971221",
+      "handle": "hublot-classic-fusion-aerofusion-forte-dei-marmi-limited-edition-20pcs-full-set-2021",
+      "brand": "Hublot",
+      "titolo": "L'Hublot Classic Fusion del 2021",
+      "titoloTesto": "L'Hublot Classic Fusion del 2021",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_4372.jpg?v=1722425118",
+      "pezzo": "Hublot Classic Fusion Aerofusion Forte dei Marmi limited edition 20pcs full set 2021",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 1980: \"hublot\" in francese vuol dire oblò, e la lunetta con le viti lo ricorda. Fu il primo orologio a mettere insieme una cassa d'oro e un cinturino in caucciù — allora uno scandalo, oggi normale.",
+      "storiaTitolo": "Hublot",
       "dettaglio": null,
       "dettaglioTitolo": null,
       "scheda": [
         {
           "voce": "Referenza",
-          "valore": "2023"
+          "valore": "2021"
         },
         {
           "voce": "Anno",
-          "valore": "2023"
+          "valore": "2021"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "In ceramica da 45mm"
+        },
+        {
+          "voce": "Corredo",
+          "valore": "Full set"
         }
       ],
-      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_6064.jpg?v=1709116733",
-      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20pezzo%20del%202023.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_4373.jpg?v=1722425118",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20L'Hublot%20Classic%20Fusion%20del%202021.%20Vorrei%20sapere%20di%20pi%C3%B9.",
       "paragrafi": [
-        "Un pezzo del 2023.",
-        "Questo esemplare è in boutique. € 17.000."
+        "Un Hublot Classic Fusion del 2021: cassa da in ceramica da 45mm.",
+        "Del 1980: «hublot» in francese vuol dire oblò, e la lunetta con le viti lo ricorda. Fu il primo orologio a mettere insieme una cassa d'oro e un cinturino in caucciù — allora uno scandalo, oggi normale.",
+        "Questo esemplare è full set. € 21.500."
+      ],
+      "prezzo": "€ 21.500",
+      "racconti": [
+        "/\\bhublot\\b/i"
+      ]
+    },
+    {
+      "numero": 27,
+      "data": "2026-08-27",
+      "id": "orologi:10276295377237",
+      "handle": "rolex-gmt-master-ii-116758sa-2019-full-set-ita",
+      "brand": "Rolex",
+      "titolo": "Il Rolex GMT-Master del 2019",
+      "titoloTesto": "Il Rolex GMT-Master del 2019",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3135.jpg?v=1764862317",
+      "pezzo": "Rolex GMT-Master II 116758SA 2019 Full Set ITA",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Nato nel 1955 insieme alla Pan Am: serviva ai piloti dei voli intercontinentali per leggere due fusi insieme. La ghiera bicolore rosso-blu distingueva a colpo d'occhio le ore del giorno da quelle della notte.",
+      "storiaTitolo": "Rolex GMT-Master",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "1116758SA"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2019"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "In oro giallo e diamanti"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Pavè di diamanti"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "Automatico"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "Oyster in oro giallo"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3136.jpg?v=1764862318",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Rolex%20GMT-Master%20del%202019.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex GMT-Master del 2019: cassa in in oro giallo e diamanti, quadrante pavè di diamanti, bracciale Oyster in oro giallo.",
+        "Nato nel 1955 insieme alla Pan Am: serviva ai piloti dei voli intercontinentali per leggere due fusi insieme. La ghiera bicolore rosso-blu distingueva a colpo d'occhio le ore del giorno da quelle della notte.",
+        "Questo esemplare è full set ed è in condizioni ottime. € 115.000."
+      ],
+      "prezzo": "€ 115.000",
+      "racconti": [
+        "/\\bgmt[\\s-]?master\\b|\\bgmt\\b/i"
+      ]
+    },
+    {
+      "numero": 28,
+      "data": "2026-08-28",
+      "id": "orologi:10428160639317",
+      "handle": "cartier-tank-louis-cartier-large-wgta0191-like-new-2025",
+      "brand": "Cartier",
+      "titolo": "La Cartier Tank del 2025",
+      "titoloTesto": "La Cartier Tank del 2025",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7129.jpg?v=1770979843",
+      "pezzo": "Cartier Tank Louis Cartier Large WGTA0191 like new 2025",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 1917: le linee vengono dai carri armati Renault FT visti dall'alto — i due \"brancard\" laterali sono i cingoli. Da allora non è praticamente cambiato.",
+      "storiaTitolo": "Cartier Tank",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "2025"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2025"
+        },
+        {
+          "voce": "Misura",
+          "valore": "Della cassa:33,7 x 25,5 mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Oro giallo"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "1917 MC"
+        },
+        {
+          "voce": "Corredo",
+          "valore": "Cartier Sì"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7130_870e6ea0-7fbf-4cc6-81d7-7a6461cb4eb2.jpg?v=1770979843",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20La%20Cartier%20Tank%20del%202025.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Una Cartier Tank del 2025: cassa da della cassa:33,7 x 25,5 mm in oro giallo.",
+        "Del 1917: le linee vengono dai carri armati Renault FT visti dall'alto — i due «brancard» laterali sono i cingoli. Da allora non è praticamente cambiato.",
+        "Questo esemplare arriva con cartier Sì. € 13.500."
+      ],
+      "prezzo": "€ 13.500",
+      "racconti": [
+        "/\\btank\\b/i"
+      ]
+    },
+    {
+      "numero": 29,
+      "data": "2026-08-29",
+      "id": "orologi:8983183589717",
+      "handle": "hublot-big-bang-integral-time-only-456-nx-0170-nx-no-paper-hublot",
+      "brand": "Hublot",
+      "titolo": "L'Hublot Big Bang",
+      "titoloTesto": "L'Hublot Big Bang",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5701.jpg?v=1708600595",
+      "pezzo": "Hublot Big Bang Integral Time Only 456.NX.0170.NX NO PAPER HUBLOT",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 2005, l'anno in cui Jean-Claude Biver rilancia Hublot con l'idea della «fusione»: oro e caucciù, ceramica e titanio, materiali che prima non si mettevano insieme. È il modello che ha salvato il marchio.",
+      "storiaTitolo": "Hublot Big Bang",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "0170.NX"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5702.jpg?v=1708600595",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20L'Hublot%20Big%20Bang.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Hublot Big Bang.",
+        "Del 2005, l'anno in cui Jean-Claude Biver rilancia Hublot con l'idea della «fusione»: oro e caucciù, ceramica e titanio, materiali che prima non si mettevano insieme. È il modello che ha salvato il marchio.",
+        "Questo esemplare è in boutique. € 13.500."
+      ],
+      "prezzo": "€ 13.500",
+      "racconti": [
+        "/\\bbig\\s*bang\\b/i"
+      ]
+    },
+    {
+      "numero": 30,
+      "data": "2026-08-30",
+      "id": "orologi:11459277357397",
+      "handle": "rolex-submariner-date-116610lv-hulk-2011-box-paper-saudi-arabia",
+      "brand": "Rolex",
+      "titolo": "Il Submariner che tutti chiamano Hulk",
+      "titoloTesto": "Il Submariner che tutti chiamano ",
+      "titoloCorsivo": "Hulk",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5810.jpg?v=1784733635",
+      "pezzo": "Rolex Submariner Date 116610LV «Hulk» 2011 Box&Paper (Saudi Arabia)",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Ghiera E quadrante verdi, cassa robusta: il verde tutto pieno gli è valso il nome del personaggio dei fumetti.",
+      "storia": null,
+      "storiaTitolo": null,
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "116610LV"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2011"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Acciaio"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Verde"
+        },
+        {
+          "voce": "Corredo",
+          "valore": "Scatola e documenti"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Ottime"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5811.jpg?v=1784733635",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Submariner%20che%20tutti%20chiamano%20Hulk.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Submariner del 2011: cassa in acciaio, quadrante verde.",
+        "Chi lo conosce lo chiama «Hulk». Ghiera E quadrante verdi, cassa robusta: il verde tutto pieno gli è valso il nome del personaggio dei fumetti.",
+        "Questo esemplare arriva con scatola e documenti ed è in condizioni ottime. € 17.000."
       ],
       "prezzo": "€ 17.000",
       "racconti": [
-        "/\\brevision\\w*|\\bogni\\s+quanto\\s+(?:si\\s+)?(?:fa|va)\\b|\\bmanutenzion\\w*/i"
+        "/\\bhulk\\b/i"
+      ]
+    },
+    {
+      "numero": 31,
+      "data": "2026-08-31",
+      "id": "orologi:11351934861653",
+      "handle": "cartier-santos-de-cartier-grey-dial-2024-w2sa0030",
+      "brand": "Cartier",
+      "titolo": "La Cartier Santos del 2024",
+      "titoloTesto": "La Cartier Santos del 2024",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3880.jpg?v=1781005981",
+      "pezzo": "Cartier Santos De Cartier Grey Dial 2024 W2SA0030",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 1904: Louis Cartier lo fece per l'amico Alberto Santos-Dumont, pioniere dell'aviazione, che in volo non poteva togliere le mani dai comandi per tirare fuori l'orologio da tasca. È uno dei primi orologi da polso da uomo della storia.",
+      "storiaTitolo": "Cartier Santos",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "2024"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2024"
+        },
+        {
+          "voce": "Corredo",
+          "valore": "Cartier Sì"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3881_cb411e31-0f48-49bd-ac52-08cfbd785d8f.jpg?v=1781005981",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20La%20Cartier%20Santos%20del%202024.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Una Cartier Santos del 2024.",
+        "Del 1904: Louis Cartier lo fece per l'amico Alberto Santos-Dumont, pioniere dell'aviazione, che in volo non poteva togliere le mani dai comandi per tirare fuori l'orologio da tasca. È uno dei primi orologi da polso da uomo della storia.",
+        "Questo esemplare arriva con cartier Sì. € 12.000."
+      ],
+      "prezzo": "€ 12.000",
+      "racconti": [
+        "/\\bsantos\\b/i"
       ]
     }
   ]
