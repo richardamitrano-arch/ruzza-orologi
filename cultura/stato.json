@@ -1314,6 +1314,61 @@
       "racconti": [
         "/\\bhublot\\b/i"
       ]
+    },
+    {
+      "numero": 27,
+      "data": "2026-08-27",
+      "id": "orologi:10276295377237",
+      "handle": "rolex-gmt-master-ii-116758sa-2019-full-set-ita",
+      "brand": "Rolex",
+      "titolo": "Il Rolex GMT-Master del 2019",
+      "titoloTesto": "Il Rolex GMT-Master del 2019",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3135.jpg?v=1764862317",
+      "pezzo": "Rolex GMT-Master II 116758SA 2019 Full Set ITA",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Nato nel 1955 insieme alla Pan Am: serviva ai piloti dei voli intercontinentali per leggere due fusi insieme. La ghiera bicolore rosso-blu distingueva a colpo d'occhio le ore del giorno da quelle della notte.",
+      "storiaTitolo": "Rolex GMT-Master",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "1116758SA"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2019"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "In oro giallo e diamanti"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Pavè di diamanti"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "Automatico"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "Oyster in oro giallo"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_3136.jpg?v=1764862318",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Rolex%20GMT-Master%20del%202019.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex GMT-Master del 2019: cassa in in oro giallo e diamanti, quadrante pavè di diamanti, bracciale Oyster in oro giallo.",
+        "Nato nel 1955 insieme alla Pan Am: serviva ai piloti dei voli intercontinentali per leggere due fusi insieme. La ghiera bicolore rosso-blu distingueva a colpo d'occhio le ore del giorno da quelle della notte.",
+        "Questo esemplare è full set ed è in condizioni ottime. € 115.000."
+      ],
+      "prezzo": "€ 115.000",
+      "racconti": [
+        "/\\bgmt[\\s-]?master\\b|\\bgmt\\b/i"
+      ]
     }
   ]
 }
