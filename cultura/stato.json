@@ -1557,6 +1557,63 @@
       "racconti": [
         "/\\bsantos\\b/i"
       ]
+    },
+    {
+      "numero": 32,
+      "data": "2026-09-01",
+      "id": "orologi:11405767377237",
+      "handle": "audemars-piguet-royal-oak-jumbo-50th-anniversary-16202st-2022-like-new-39mm",
+      "brand": "Audemars Piguet",
+      "titolo": "Il Royal Oak che tutti chiamano Jumbo",
+      "titoloTesto": "Il Royal Oak che tutti chiamano ",
+      "titoloCorsivo": "Jumbo",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5078.jpg?v=1783087274",
+      "pezzo": "Audemars Piguet Royal Oak Jumbo «50th Anniversary» 16202ST 2022 Like new 39mm",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Nel 1972 una cassa da 39 mm in acciaio era enorme per l'epoca: i rivenditori lo chiamarono \"Jumbo\", e il nome è rimasto anche ora che 39 mm sono una misura normale.",
+      "storia": "Del 1972, disegnato da Gérald Genta: ghiera ottagonale con otto viti a vista, quadrante \"tapisserie\", e soprattutto acciaio venduto al prezzo dell'oro — cosa che all'epoca sembrò una follia. Il nome viene dalle navi da guerra britanniche HMS Royal Oak.",
+      "storiaTitolo": "Audemars Piguet Royal Oak",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "16202ST"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2022"
+        },
+        {
+          "voce": "Misura",
+          "valore": "CASSA - 39 mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "CINTURINO - Acciaio"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "- Blu"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "- Automatico"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5079_3e54fdc7-5a33-4d3a-97fe-1be8aaba6b2f.jpg?v=1783087275",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Royal%20Oak%20che%20tutti%20chiamano%20Jumbo.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Audemars Piguet Royal Oak del 2022: cassa da cASSA - 39 mm in cINTURINO - Acciaio, quadrante - Blu.",
+        "Nel mercato ha un nome suo: «Jumbo». Nel 1972 una cassa da 39 mm in acciaio era enorme per l'epoca: i rivenditori lo chiamarono «Jumbo», e il nome è rimasto anche ora che 39 mm sono una misura normale.",
+        "Del 1972, disegnato da Gérald Genta: ghiera ottagonale con otto viti a vista, quadrante «tapisserie», e soprattutto acciaio venduto al prezzo dell'oro — cosa che all'epoca sembrò una follia. Il nome viene dalle navi da guerra britanniche HMS Royal Oak.",
+        "Questo esemplare è in condizioni - Pari al nuovo e mai indossato. € 80.000."
+      ],
+      "prezzo": "€ 80.000",
+      "racconti": [
+        "/\\bjumbo\\b/i",
+        "/\\broyal\\s*oak\\b/i"
+      ]
     }
   ]
 }
