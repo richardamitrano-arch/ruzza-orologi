@@ -1673,6 +1673,63 @@
         "/\\boyster\\s*(?:bracciale|bracelet)\\b|\\bbracciale\\s+oyster\\b/i",
         "/\\bdaytona\\b/i"
       ]
+    },
+    {
+      "numero": 34,
+      "data": "2026-09-03",
+      "id": "orologi:11558481363285",
+      "handle": "rolex-gmt-master-16750-pepsi-full-set-1987-ita",
+      "brand": "Rolex",
+      "titolo": "Il GMT-Master che tutti chiamano Pepsi",
+      "titoloTesto": "Il GMT-Master che tutti chiamano ",
+      "titoloCorsivo": "Pepsi",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7289.jpg?v=1788346859",
+      "pezzo": "Rolex GMT-Master 16750 Pepsi Full Set 1987 ITA",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Ghiera rossa e blu — BLRO, bleu-rouge — come il logo della bibita. È la combinazione del GMT originale del 1955, che serviva a distinguere il giorno dalla notte del secondo fuso.",
+      "storia": "Nel 1926 Rolex brevetta la prima cassa da polso davvero impermeabile: corona e fondello a vite, come un'ostrica. L'anno dopo la nuotatrice Mercedes Gleitze attraversa la Manica con un Oyster addosso, e Rolex compra la prima pagina del Daily Mail per raccontarlo.",
+      "storiaTitolo": "Rolex Oyster",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "16750"
+        },
+        {
+          "voce": "Anno",
+          "valore": "1987"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Acciaio"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "Oyster"
+        },
+        {
+          "voce": "Corredo",
+          "valore": "Full set"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Ottime"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7290.jpg?v=1788346859",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20GMT-Master%20che%20tutti%20chiamano%20Pepsi.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex GMT-Master del 1987: cassa in acciaio, bracciale Oyster.",
+        "Chi lo conosce lo chiama «Pepsi». Ghiera rossa e blu — BLRO, bleu-rouge — come il logo della bibita. È la combinazione del GMT originale del 1955, che serviva a distinguere il giorno dalla notte del secondo fuso.",
+        "Nel 1926 Rolex brevetta la prima cassa da polso davvero impermeabile: corona e fondello a vite, come un'ostrica. L'anno dopo la nuotatrice Mercedes Gleitze attraversa la Manica con un Oyster addosso, e Rolex compra la prima pagina del Daily Mail per raccontarlo.",
+        "Questo esemplare è full set ed è in condizioni ottime. € 15.500."
+      ],
+      "prezzo": "€ 15.500",
+      "racconti": [
+        "/\\bpepsi\\b/i",
+        "/\\boyster\\b(?!\\s*perpetual)/i"
+      ]
     }
   ]
 }
