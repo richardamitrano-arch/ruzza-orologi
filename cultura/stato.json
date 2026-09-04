@@ -1730,6 +1730,59 @@
         "/\\bpepsi\\b/i",
         "/\\boyster\\b(?!\\s*perpetual)/i"
       ]
+    },
+    {
+      "numero": 35,
+      "data": "2026-09-04",
+      "id": "orologi:9129107489109",
+      "handle": "jaeger-lecoultre-reverso-18k-diamond-265-1-08-only-watch",
+      "brand": "Jaeger-LeCoultre",
+      "titolo": "La Jaeger-LeCoultre Reverso",
+      "titoloTesto": "La Jaeger-LeCoultre Reverso",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_0521_25f447dd-4284-4c16-9a87-faf06dc00291.jpg?v=1715943959",
+      "pezzo": "Jaeger-LeCoultre Reverso 18k Diamond 265.1.08 only watch",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 1931: la cassa scorre e si gira su sé stessa per proteggere il vetro. L'idea nasce per i giocatori di polo, che rompevano gli orologi in partita.",
+      "storiaTitolo": "Jaeger-LeCoultre Reverso",
+      "dettaglio": "Oro 18 kt vuol dire 750 parti su mille di oro puro: il resto è lega, ed è quella a dare il colore — rame per il rosa, palladio o argento per il bianco. Il punzone «750» è obbligatorio, insieme al marchio di identificazione del produttore.",
+      "dettaglioTitolo": "Oro 18 carati e punzoni",
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "Erimento: 265.1.08"
+        },
+        {
+          "voce": "Misura",
+          "valore": "Della cassa: 21 mm x 33 mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "18KY"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Argento"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "Movimento al quarzo"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_0522_938eef07-e7de-4299-a1dc-f5e044a1d78a.jpg?v=1715943959",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20La%20Jaeger-LeCoultre%20Reverso.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Una Jaeger-LeCoultre Reverso: cassa da della cassa: 21 mm x 33 mm in 18KY, quadrante argento.",
+        "Del 1931: la cassa scorre e si gira su sé stessa per proteggere il vetro. L'idea nasce per i giocatori di polo, che rompevano gli orologi in partita.",
+        "Oro 18 kt vuol dire 750 parti su mille di oro puro: il resto è lega, ed è quella a dare il colore — rame per il rosa, palladio o argento per il bianco. Il punzone «750» è obbligatorio, insieme al marchio di identificazione del produttore.",
+        "Questo esemplare è in boutique. € 7000."
+      ],
+      "prezzo": "€ 7000",
+      "racconti": [
+        "/\\b18\\s*(?:kt|k|carati)\\b|\\b750\\b|\\bpunzon\\w*/i",
+        "/\\breverso\\b/i"
+      ]
     }
   ]
 }
