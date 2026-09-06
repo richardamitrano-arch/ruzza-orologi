@@ -1840,6 +1840,63 @@
         "/\\bfull\\s*set\\b|\\bcosa\\s+comprende\\b|\\bche\\s+corredo\\b/i",
         "/\\bnautilus\\b/i"
       ]
+    },
+    {
+      "numero": 37,
+      "data": "2026-09-06",
+      "id": "orologi:11445368095061",
+      "handle": "rolex-datejust-31mm-68278-boy-paper-rolex-no-box-1986-ita",
+      "brand": "Rolex",
+      "titolo": "Il Datejust che tutti chiamano Boy",
+      "titoloTesto": "Il Datejust che tutti chiamano ",
+      "titoloCorsivo": "Boy",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5577.jpg?v=1784214942",
+      "pezzo": "Rolex Datejust 31mm 68278 Boy Paper Rolex No Box 1986 Ita",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Misura di mezzo fra il 36 mm da uomo e il 26 mm da donna: nel gergo del mercato è il \"boy size\", e oggi lo portano tutti.",
+      "storia": "Del 1945, per i quarant'anni della casa: è il primo cronometro automatico da polso con la data a finestrella. La lente sul vetro — il \"Cyclops\" — arriva nel 1953.",
+      "storiaTitolo": "Rolex Datejust",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "68278"
+        },
+        {
+          "voce": "Anno",
+          "valore": "1986"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Oro giallo 18 carati"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "2135"
+        },
+        {
+          "voce": "Bracciale",
+          "valore": "Pelle"
+        },
+        {
+          "voce": "Condizioni",
+          "valore": "Ottime"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5578.jpg?v=1784214943",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Datejust%20che%20tutti%20chiamano%20Boy.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex Datejust del 1986: cassa in oro giallo 18 carati, bracciale pelle.",
+        "Nel mercato ha un nome suo: «Boy». Misura di mezzo fra il 36 mm da uomo e il 26 mm da donna: nel gergo del mercato è il «boy size», e oggi lo portano tutti.",
+        "Del 1945, per i quarant'anni della casa: è il primo cronometro automatico da polso con la data a finestrella. La lente sul vetro — il «Cyclops» — arriva nel 1953.",
+        "Questo esemplare è in condizioni ottime. € 7000."
+      ],
+      "prezzo": "€ 7000",
+      "racconti": [
+        "/\\bboy\\b/i",
+        "/\\bdatejust\\b/i"
+      ]
     }
   ]
 }
