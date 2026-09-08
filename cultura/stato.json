@@ -1936,6 +1936,61 @@
       "racconti": [
         "/\\bocto\\b/i"
       ]
+    },
+    {
+      "numero": 39,
+      "data": "2026-09-08",
+      "id": "orologi:11298864103765",
+      "handle": "patek-philippe-aquanaut-travel-time-5164a-2023-like-new-italia",
+      "brand": "Patek Philippe",
+      "titolo": "Il Patek Philippe Aquanaut del 2023",
+      "titoloTesto": "Il Patek Philippe Aquanaut del 2023",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_4753.jpg?v=1778687121",
+      "pezzo": "Patek Philippe Aquanaut Travel Time 5164A 2023 LIKE NEW (Italia)",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Del 1997: la stessa idea del Nautilus, ma per una generazione più giovane — cassa arrotondata e cinturino in materiale composito, che allora era una scelta coraggiosa per Patek.",
+      "storiaTitolo": "Patek Philippe Aquanaut",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "5164A"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2023"
+        },
+        {
+          "voce": "Misura",
+          "valore": "- 40 mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Cinturino - Gomma"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "- Grigio"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "- Automatico"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_4754.jpg?v=1778687122",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Patek%20Philippe%20Aquanaut%20del%202023.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Patek Philippe Aquanaut del 2023: cassa da - 40 mm in cinturino - Gomma, quadrante - Grigio.",
+        "Del 1997: la stessa idea del Nautilus, ma per una generazione più giovane — cassa arrotondata e cinturino in materiale composito, che allora era una scelta coraggiosa per Patek.",
+        "Questo esemplare è in condizioni - Nuovo. € 90.000."
+      ],
+      "prezzo": "€ 90.000",
+      "racconti": [
+        "/\\baquanaut\\b/i"
+      ]
     }
   ]
 }
