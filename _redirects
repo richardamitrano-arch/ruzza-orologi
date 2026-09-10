@@ -1,3 +1,7 @@
+/account https://shop.ruzzaorologi.com/account/login?locale=it 302
+/account/ https://shop.ruzzaorologi.com/account/login?locale=it 302
+/account/login https://shop.ruzzaorologi.com/account/login?locale=it 302
+/account/login/ https://shop.ruzzaorologi.com/account/login?locale=it 302
 /cultura/* https://ruzzaorologi.com/cultura/:splat 301
 /cultura https://ruzzaorologi.com/cultura/ 301
 /* /index.html 200
