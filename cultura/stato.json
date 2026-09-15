@@ -2303,6 +2303,36 @@
       "racconti": [
         "/\\brichard\\s*mille\\b/i"
       ]
+    },
+    {
+      "numero": 46,
+      "data": "2026-09-15",
+      "id": "orologi:8968471478613",
+      "handle": "cartier-pasha-w3019851-palladium-42mm-white-gold-limited-99-pz",
+      "brand": "Cartier",
+      "titolo": "Il Cartier Pasha W3019851",
+      "titoloTesto": "Il Cartier Pasha W3019851",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5049.jpg?v=1707750173",
+      "pezzo": "Cartier Pasha W3019851 Palladium 42mm white gold limited 99 pz",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "La tradizione della maison lo fa risalire a una commissione del Pascià di Marrakech, che voleva un orologio con cui poter nuotare. Il modello moderno è del 1985, rivisto da Gérald Genta: cassa tonda, numeri grandi, il cappuccio della corona legato alla cassa da una catenella.",
+      "storiaTitolo": "Cartier Pasha",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_5050.jpg?v=1707750173",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Cartier%20Pasha%20W3019851.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Cartier Pasha W3019851: serie limitata di 99 esemplari.",
+        "La tradizione della maison lo fa risalire a una commissione del Pascià di Marrakech, che voleva un orologio con cui poter nuotare. Il modello moderno è del 1985, rivisto da Gérald Genta: cassa tonda, numeri grandi, il cappuccio della corona legato alla cassa da una catenella.",
+        "Questo esemplare è in boutique. € 11.000."
+      ],
+      "prezzo": "€ 11.000",
+      "racconti": [
+        "/\\bpasha\\b/i"
+      ]
     }
   ]
 }
