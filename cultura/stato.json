@@ -2333,6 +2333,61 @@
       "racconti": [
         "/\\bpasha\\b/i"
       ]
+    },
+    {
+      "numero": 47,
+      "data": "2026-09-16",
+      "id": "orologi:11593724756309",
+      "handle": "rolex-gmt-master-ii-126711chnr-rootbeer-2023-full-set",
+      "brand": "Rolex",
+      "titolo": "Il GMT-Master che tutti chiamano Rootbeer",
+      "titoloTesto": "Il GMT-Master che tutti chiamano ",
+      "titoloCorsivo": "Rootbeer",
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7634.jpg?v=1789052696",
+      "pezzo": "Rolex GMT-Master II 126711CHNR «Rootbeer» 2023 Full Set",
+      "occhiello": "Il pezzo di oggi",
+      "perche": "Marrone e nero, i colori della root beer americana. Sulle versioni vintage in acciaio e oro il soprannome era già in uso.",
+      "storia": null,
+      "storiaTitolo": null,
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "Erenza: 126711CHNR"
+        },
+        {
+          "voce": "Anno",
+          "valore": "2023"
+        },
+        {
+          "voce": "Misura",
+          "valore": "Della cassa: 40 mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Acciaio/Oro"
+        },
+        {
+          "voce": "Quadrante",
+          "valore": "Nero"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "Automatico"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_7635.jpg?v=1789052695",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20GMT-Master%20che%20tutti%20chiamano%20Rootbeer.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Rolex GMT-Master del 2023: cassa da della cassa: 40 mm in acciaio/Oro, quadrante nero.",
+        "Chi lo conosce lo chiama «Rootbeer». Marrone e nero, i colori della root beer americana. Sulle versioni vintage in acciaio e oro il soprannome era già in uso.",
+        "Questo esemplare è full set. € 18.250."
+      ],
+      "prezzo": "€ 18.250",
+      "racconti": [
+        "/\\broot\\s*beer\\b/i"
+      ]
     }
   ]
 }
