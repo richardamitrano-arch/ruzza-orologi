@@ -2435,6 +2435,61 @@
       "racconti": [
         "/\\bblack\\s*bay\\b/i"
       ]
+    },
+    {
+      "numero": 49,
+      "data": "2026-09-18",
+      "id": "orologi:10185569468757",
+      "handle": "panerai-luminor-rare-pam00009-l-swiss-l-1999-44-mm-full-set",
+      "brand": "Panerai",
+      "titolo": "Il Panerai Luminor del 1999",
+      "titoloTesto": "Il Panerai Luminor del 1999",
+      "titoloCorsivo": null,
+      "foto": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_8950.jpg?v=1759317766",
+      "pezzo": "Panerai Luminor Rare PAM00009 «L Swiss L» 1999 44 mm full set 250pcs limited edition",
+      "occhiello": "Il pezzo di oggi",
+      "perche": null,
+      "storia": "Nasce a Firenze come fornitore della Marina Militare italiana: il Radiomir e poi il Luminor erano strumenti per i sommozzatori dei mezzi d'assalto. Il ponte a leva che protegge la corona è il segno riconoscibile del Luminor.",
+      "storiaTitolo": "Panerai",
+      "dettaglio": null,
+      "dettaglioTitolo": null,
+      "scheda": [
+        {
+          "voce": "Referenza",
+          "valore": "1999"
+        },
+        {
+          "voce": "Anno",
+          "valore": "1999"
+        },
+        {
+          "voce": "Misura",
+          "valore": "44,00 mm"
+        },
+        {
+          "voce": "Cassa",
+          "valore": "Del caso: Acciaio inossidabile"
+        },
+        {
+          "voce": "Movimento",
+          "valore": "Op i"
+        },
+        {
+          "voce": "Corredo",
+          "valore": "Completo"
+        }
+      ],
+      "foto2": "https://cdn.shopify.com/s/files/1/0615/4194/1494/files/IMG_8951.jpg?v=1759317765",
+      "whatsapp": "https://wa.me/393319689707?text=Buongiorno%2C%20ho%20letto%20Cultura%20di%20oggi%3A%20Il%20Panerai%20Luminor%20del%201999.%20Vorrei%20sapere%20di%20pi%C3%B9.",
+      "paragrafi": [
+        "Un Panerai Luminor del 1999: cassa da 44 mm in del caso: Acciaio inossidabile.",
+        "Nasce a Firenze come fornitore della Marina Militare italiana: il Radiomir e poi il Luminor erano strumenti per i sommozzatori dei mezzi d'assalto. Il ponte a leva che protegge la corona è il segno riconoscibile del Luminor.",
+        "Questo esemplare è completo di scatola e documenti. € 9900."
+      ],
+      "prezzo": "€ 9900",
+      "racconti": [
+        "/\\bluminor\\b|\\bradiomir\\b|\\bpanerai\\b/i"
+      ]
     }
   ]
 }
