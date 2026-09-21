@@ -1,3 +1,5 @@
+# Lancio 21/9 (Lorenzo): la home rimanda a ruzzawatch.com, /orologi e le altre pagine restano vive
+/ https://ruzzawatch.com/ 302
 /account https://shop.ruzzaorologi.com/account/login?locale=it 302
 /account/ https://shop.ruzzaorologi.com/account/login?locale=it 302
 /account/login https://shop.ruzzaorologi.com/account/login?locale=it 302
