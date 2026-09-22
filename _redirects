@@ -4,4 +4,5 @@
 /account/login/ https://shop.ruzzaorologi.com/account/login?locale=it 302
 /cultura/* https://ruzzaorologi.com/cultura/:splat 301
 /cultura https://ruzzaorologi.com/cultura/ 301
+/products/* / 200
 /* /index.html 200
