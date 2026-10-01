@@ -1,90 +1,62 @@
 <!doctype html>
 <html lang="it">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="theme-color" content="#0A0B0C" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" as="image" href="/media/lorenzo_poster.jpg" fetchpriority="high" />
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin />
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0A0B0C">
     <title>Ruzza Orologi — Alta Orologeria · Milano</title>
-    <meta
-      name="description"
-      content="Ruzza Orologi — boutique di alta orologeria nel cuore di Milano dal 2017. Rolex, Patek Philippe, Audemars Piguet, Cartier. Acquisto, vendita e valutazione gratuita. Certificato Chrono24."
-    />
-    <link rel="canonical" href="https://ruzzaorologi.com/" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Ruzza Orologi" />
-    <meta property="og:title" content="Ruzza Orologi — Alta Orologeria · Milano" />
-    <meta
-      property="og:description"
-      content="Boutique di alta orologeria nel cuore di Milano dal 2017. Acquisto, vendita e valutazione gratuita."
-    />
-    <meta property="og:url" content="https://ruzzaorologi.com/" />
-    <meta property="og:image" content="https://richardamitrano-arch.github.io/ruzza-orologi/media/hero-picsart-webp/f_001.webp" />
-    <meta property="og:image:width" content="1920" />
-    <meta property="og:image:height" content="1080" />
-    <meta property="og:locale" content="it_IT" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ruzza Orologi — Alta Orologeria · Milano" />
-    <meta name="twitter:description" content="Boutique di alta orologeria nel cuore di Milano dal 2017. Acquisto, vendita e valutazione gratuita." />
-    <meta name="twitter:image" content="https://richardamitrano-arch.github.io/ruzza-orologi/media/hero-picsart-webp/f_001.webp" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "JewelryStore",
-        "name": "Ruzza Orologi",
-        "legalName": "Ruzza Orologi S.r.l.",
-        "url": "https://ruzzaorologi.com/",
-        "image": "https://richardamitrano-arch.github.io/ruzza-orologi/media/hero-picsart-webp/f_001.webp",
-        "telephone": "+39 331 9689707",
-        "email": "labottegadeltempo@yahoo.com",
-        "vatID": "11049590968",
-        "priceRange": "€€€€",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Via Cesare Battisti 8",
-          "addressLocality": "Milano",
-          "postalCode": "20122",
-          "addressCountry": "IT"
-        },
-        "sameAs": [
-          "https://www.instagram.com/ruzzaorologi",
-          "https://www.facebook.com/ruzzaorologi"
-        ]
-      }
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://shop.ruzzaorologi.com/">
+    <!-- Dal 1/10/2026 il sito sta sul negozio Shopify: questa pagina porta lì ogni indirizzo. -->
+    <script>
+      (function () {
+        var S = 'https://shop.ruzzaorologi.com';
+        var pagine = {
+          '/orologi': S + '/collections/orologi',
+          '/novita': S + '/collections/novita',
+          '/privacy': S + '/pages/privacy-policy',
+          '/cookie': S + '/pages/privacy-policy',
+          '/account': S + '/account',
+          '/account/login': S + '/account',
+          '/borse': 'https://ruzzabags.com',
+          '/gioielli': 'https://ruzzabags.com/collections/gioielli'
+        };
+        // Sezioni della vecchia home che oggi stanno su altri siti.
+        var sezioni = {
+          '#prestigious-video': 'https://ruzzawatch.com/pages/lorenzo-ruzza-prestigious',
+          '#profumi': 'https://ruzzawatch.com/pages/lorenzo-ruzza-prestigious',
+          '#ruzza-watch-video': 'https://ruzzawatch.com',
+          '#ruzza-watch': 'https://ruzzawatch.com',
+          '#luxury-bags-film': 'https://ruzzabags.com',
+          '#borse': 'https://ruzzabags.com',
+          '#gioielli': 'https://ruzzabags.com/collections/gioielli'
+        };
+        // Prodotti che non sono orologi: ognuno al sito dove si vende.
+        var altri = {"ruzza-watch-luxury-carbon-black-malachite-1":"https://ruzzawatch.com/products/ruzza-watch-luxury-carbon-black-malachite-1","ruzza-watch-luxury-titanio-salmon":"https://ruzzawatch.com/products/ruzza-watch-luxury-titanio-salmon","ruzza-watch-luxury-titanio-meteorite":"https://ruzzawatch.com/products/ruzza-watch-luxury-titanio-meteorite","ruzza-watch-luxury-scheletrati":"https://ruzzawatch.com/products/ruzza-watch-luxury-scheletrati","ruzza-watch-luxury-carbon-oro-carbon":"https://ruzzawatch.com/products/ruzza-watch-luxury-carbon-oro-carbon","ruzza-watch-luxury-carbon-black-onice":"https://ruzzawatch.com/products/ruzza-watch-luxury-carbon-black-onice","ruzza-watch-luxury-carbon-black-lapislazzuli":"https://ruzzawatch.com/products/ruzza-watch-luxury-carbon-black-lapislazzuli","ruzza-watch-luxury-carbon-black-malachite-copy":"https://ruzzawatch.com/products/ruzza-watch-luxury-carbon-black-malachite-copy","ruzza-watch-luxury-carbon-black-malachite":"https://ruzzawatch.com/products/ruzza-watch-luxury-carbon-black-malachite","ruzza-watch-luxury-purple":"https://ruzzawatch.com/products/ruzza-watch-luxury-purple","ruzza-watch-luxury-bianco-turchese-copy":"https://ruzzawatch.com/products/ruzza-watch-luxury-bianco-turchese-copy","ruzza-watch-luxury-bianco-turchese":"https://ruzzawatch.com/products/ruzza-watch-luxury-bianco-turchese","ruzza-watch-luxury-copy":"https://ruzzawatch.com/products/ruzza-watch-luxury-copy","maglia-ruzza-luxury-watch-forget-carbon-con-filamenti-oro-24kt-and-titanium-avventurina-green-e-forget-carbon-con-filamenti-oro-24kt-and-titanium-ip-yellow":"https://ruzzawatch.com/products/maglia-ruzza-luxury-watch-forget-carbon-con-filamenti-oro-24kt-and-titanium-avventurina-green-e-forget-carbon-con-filamenti-oro-24kt-and-titanium-ip-yellow","maglia-ruzza-luxury-watch-carbon-black-avventurina-blu-onix-daimond-e-black-turchese-carbon-black-meteorite":"https://ruzzawatch.com/products/maglia-ruzza-luxury-watch-carbon-black-avventurina-blu-onix-daimond-e-black-turchese-carbon-black-meteorite","maglia-ruzza-luxury-watch-barbon-white-turchese-onice":"https://ruzzawatch.com/products/maglia-ruzza-luxury-watch-barbon-white-turchese-onice","maglia-ruzza-luxury-watch-titanio-meteorite-salmon-titanio-meteorite-titanio-scheletrato":"https://ruzzawatch.com/products/maglia-ruzza-luxury-watch-titanio-meteorite-salmon-titanio-meteorite-titanio-scheletrato","maglia-ruzza-luxury-watch-forget-carbon-titanium-purple-obsidian":"https://ruzzawatch.com/products/maglia-ruzza-luxury-watch-forget-carbon-titanium-purple-obsidian","garanzia-ruzza-watch":"https://ruzzawatch.com/products/garanzia-ruzza-watch","ruzza-watch-coral":"https://ruzzawatch.com/products/ruzza-watch-coral","ruzza-watch-portoro-copy":"https://ruzzawatch.com/products/ruzza-watch-portoro-copy","ruzza-watch-blu-blu":"https://ruzzawatch.com/products/ruzza-watch-blu-blu","copy-of-hermes-birkin-25-togo-craie-2024":"https://ruzzabags.com/products/copy-of-hermes-birkin-25-togo-craie-2024","hermes-birkin-maxi-kelly-42":"https://ruzzabags.com/products/hermes-birkin-maxi-kelly-42","chanel-shopping-bag":"https://ruzzabags.com/products/chanel-shopping-bag","saint-laurent-marsupio":"https://ruzzabags.com/products/saint-laurent-marsupio","louis-vuitton-noe-2":"https://ruzzabags.com/products/louis-vuitton-noe-2","louis-vuitton-coussin":"https://ruzzabags.com/products/louis-vuitton-coussin","chanel-shopping-2":"https://ruzzabags.com/products/chanel-shopping-2","chanel-shopping":"https://ruzzabags.com/products/chanel-shopping","chanel-classic":"https://ruzzabags.com/products/chanel-classic","chanel-2-56":"https://ruzzabags.com/products/chanel-2-56","chanel-2-55":"https://ruzzabags.com/products/chanel-2-55","lady-dior-saddle-cocco-himalaya":"https://ruzzabags.com/products/lady-dior-saddle-cocco-himalaya","lady-dior-cocco-gold":"https://ruzzabags.com/products/lady-dior-cocco-gold","hermes-kelly-special-23-con-disegni":"https://ruzzabags.com/products/hermes-kelly-special-23-con-disegni","hermes-mini-constance-cocco-bordeaux-copia-1":"https://ruzzabags.com/products/hermes-mini-constance-cocco-bordeaux-copia-1","hermes-mini-constance":"https://ruzzabags.com/products/hermes-mini-constance","hermes-mini-constance-struzzo-panna":"https://ruzzabags.com/products/hermes-mini-constance-struzzo-panna","hermes-kelly-28-special-order-verde-fucsia":"https://ruzzabags.com/products/hermes-kelly-28-special-order-verde-fucsia","hermes-kelly-32-struzzo":"https://ruzzabags.com/products/hermes-kelly-32-struzzo","hermes-kelly-35-col-bianco-usata":"https://ruzzabags.com/products/hermes-kelly-35-col-bianco-usata","hermes-kelly-lakis-35-bianca-usata":"https://ruzzabags.com/products/hermes-kelly-lakis-35-bianca-usata","hermes-bolide-35-usata":"https://ruzzabags.com/products/hermes-bolide-35-usata","hermes-kelly-32-nera-usata":"https://ruzzabags.com/products/hermes-kelly-32-nera-usata","hermes-costance-24-sand":"https://ruzzabags.com/products/hermes-costance-24-sand","hermes-costance-24-cocco-vintage":"https://ruzzabags.com/products/hermes-costance-24-cocco-vintage","hermes-costance-24-vintage-coccodrillo":"https://ruzzabags.com/products/hermes-costance-24-vintage-coccodrillo","hermes-eveline-taupe":"https://ruzzabags.com/products/hermes-eveline-taupe","hermes-kelly-ii-retourne-25-togo-taupe":"https://ruzzabags.com/products/hermes-kelly-ii-retourne-25-togo-taupe","chanel-2-55-grande-nero-2022":"https://ruzzabags.com/products/chanel-2-55-grande-nero-2022","hermes-kelly-28-togo-madame":"https://ruzzabags.com/products/hermes-kelly-28-togo-madame","hermes-birkin-35-geranio-usata":"https://ruzzabags.com/products/hermes-birkin-35-geranio-usata","copy-of-hermes-birkin-25-togo-craie-2025":"https://ruzzabags.com/products/copy-of-hermes-birkin-25-togo-craie-2025","hermes-mini-evelyne-blue-jean":"https://ruzzabags.com/products/hermes-mini-evelyne-blue-jean","louis-vuitton-x-nigo-duck-bag-monogram":"https://ruzzabags.com/products/louis-vuitton-x-nigo-duck-bag-monogram","louis-vuitton-borsa-coeur-game-on":"https://ruzzabags.com/products/louis-vuitton-borsa-coeur-game-on","louis-vuitton-borsa-24h-keepall-in-visone":"https://ruzzabags.com/products/louis-vuitton-borsa-24h-keepall-in-visone","portafoglio-constance-texas-coral-copia":"https://ruzzabags.com/products/portafoglio-constance-texas-coral-copia","hermes-kelly-ii-sellier-28-epsom-2022-copia-copia":"https://ruzzabags.com/products/hermes-kelly-ii-sellier-28-epsom-2022-copia-copia","hermes-kelly-32-gold-usata-copia":"https://ruzzabags.com/products/hermes-kelly-32-gold-usata-copia","hermes-kelly-32-nera-usata-copia":"https://ruzzabags.com/products/hermes-kelly-32-nera-usata-copia","hermes-kelly-28-bianca-2022-copia":"https://ruzzabags.com/products/hermes-kelly-28-bianca-2022-copia","copy-of-hermes-kelly-28-madame-bordeaux":"https://ruzzabags.com/products/copy-of-hermes-kelly-28-madame-bordeaux","hermes-kelly-28-cocco-col-verde-usata-copia":"https://ruzzabags.com/products/hermes-kelly-28-cocco-col-verde-usata-copia","hermes-herbag-zip-31-toile-blu-copia":"https://ruzzabags.com/products/hermes-herbag-zip-31-toile-blu-copia","portafoglio-constance-compact-cocco-blu-notte":"https://ruzzabags.com/products/portafoglio-constance-compact-cocco-blu-notte","hermes-mini-constance-cocco-bordeaux-copia":"https://ruzzabags.com/products/hermes-mini-constance-cocco-bordeaux-copia","portafoglio-constance-texas-coral":"https://ruzzabags.com/products/portafoglio-constance-texas-coral","portafoglio-cocco-fleming-long-blue-zellige":"https://ruzzabags.com/products/portafoglio-cocco-fleming-long-blue-zellige","portafoglio-constance-long-cocco-verde-scuro":"https://ruzzabags.com/products/portafoglio-constance-long-cocco-verde-scuro","portafoglio-constance-long-cocco-verde":"https://ruzzabags.com/products/portafoglio-constance-long-cocco-verde","hermes-kelly-ii-28-togo-petrolio-2024":"https://ruzzabags.com/products/hermes-kelly-ii-28-togo-petrolio-2024","copy-of-hermes-kelly-ii-retourne-28-togo-orange-2024":"https://ruzzabags.com/products/copy-of-hermes-kelly-ii-retourne-28-togo-orange-2024","chanel-coco-cocoon-1":"https://ruzzabags.com/products/chanel-coco-cocoon-1","chanel-coco-cocoon":"https://ruzzabags.com/products/chanel-coco-cocoon","chanel-vintage-2":"https://ruzzabags.com/products/chanel-vintage-2","balenciaga-hourglass":"https://ruzzabags.com/products/balenciaga-hourglass","bracciale-juste-un-clou-cartier":"https://ruzzabags.com/products/bracciale-juste-un-clou-cartier","bracciale-cartier-love":"https://ruzzabags.com/products/bracciale-cartier-love","bracciale-love-firmato-cartier-22":"https://ruzzabags.com/products/bracciale-love-firmato-cartier-22","anello-rubino-e-diamanti":"https://ruzzabags.com/products/anello-rubino-e-diamanti","bracciale-rigido-rubini-e-diamanti":"https://ruzzabags.com/products/bracciale-rigido-rubini-e-diamanti","anello-pave-diamanti-copia":"https://ruzzabags.com/products/anello-pave-diamanti-copia","bracciale-tennis-zaffiri-blu-ct-6-60-copia":"https://ruzzabags.com/products/bracciale-tennis-zaffiri-blu-ct-6-60-copia","bracciale-groumette-ct-15-56":"https://ruzzabags.com/products/bracciale-groumette-ct-15-56","bracciale-cartier-love-misura-20":"https://ruzzabags.com/products/bracciale-cartier-love-misura-20","bracciale-ecrou-firmato-cartier-m19":"https://ruzzabags.com/products/bracciale-ecrou-firmato-cartier-m19","anello-love-firmato-cartier-m-60":"https://ruzzabags.com/products/anello-love-firmato-cartier-m-60","anello-cuore-tanzanite":"https://ruzzabags.com/products/anello-cuore-tanzanite","bracciale-tennis-zaffiri-blu-ct-6-60":"https://ruzzabags.com/products/bracciale-tennis-zaffiri-blu-ct-6-60","bracciale-tennis-rainbow":"https://ruzzabags.com/products/bracciale-tennis-rainbow","anello-pave-diamanti-m18":"https://ruzzabags.com/products/anello-pave-diamanti-m18","bracciale-tennis-extensible-zaffiri-rosa":"https://ruzzabags.com/products/bracciale-tennis-extensible-zaffiri-rosa","bracciale-b-zerp1-firmato-bulgari-l":"https://ruzzabags.com/products/bracciale-b-zerp1-firmato-bulgari-l","diamante-ct-1-35-blister":"https://ruzzabags.com/products/diamante-ct-1-35-blister","anello-solitario-ct-1-80":"https://ruzzabags.com/products/anello-solitario-ct-1-80","diamante-ct-1-04-blister":"https://ruzzabags.com/products/diamante-ct-1-04-blister","bracciale-tennis-ct-4-15-princess":"https://ruzzabags.com/products/bracciale-tennis-ct-4-15-princess","prestigious-turchese-luminoso-e-solare-100-ml":"https://ruzzawatch.com/products/prestigious-turchese-luminoso-e-solare-100-ml","prestigious-lapislazzuli-intenso-e-speziato-2-ml":"https://ruzzawatch.com/products/prestigious-lapislazzuli-intenso-e-speziato-2-ml","prestigious-onice-elegante-e-avvolgente-100-ml":"https://ruzzawatch.com/products/prestigious-onice-elegante-e-avvolgente-100-ml","prestigious-cofanetto":"https://ruzzawatch.com/products/prestigious-cofanetto"};
+        var percorso = (location.pathname.replace(/\/+$/, '') || '/');
+        var arrivo = S + '/';
+        var prodotto = percorso.match(/^\/products\/([^/]+)$/);
+        if (percorso === '/' && sezioni[location.hash]) {
+          arrivo = sezioni[location.hash];
+        } else if (pagine[percorso]) {
+          arrivo = pagine[percorso];
+        } else if (prodotto) {
+          var nome = decodeURIComponent(prodotto[1]);
+          arrivo = altri[nome] || (S + '/products/' + encodeURIComponent(nome));
+        }
+        location.replace(arrivo);
+      })();
     </script>
-    <script type="module" crossorigin src="/assets/index-Cya5Qb43.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/vendor-CuNE5ct5.js">
-    <link rel="modulepreload" crossorigin href="/assets/commerce-data-BqqCzqlp.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-IM9OqWlc.css">
+    <noscript><meta http-equiv="refresh" content="0; url=https://shop.ruzzaorologi.com/"></noscript>
+    <style>
+      html, body { height: 100%; margin: 0; background: #0a0b0c; color: #e8e2d3; font-family: Georgia, 'Times New Roman', serif; }
+      main { min-height: 100%; display: grid; place-items: center; text-align: center; padding: 24px; box-sizing: border-box; }
+      a { color: #e8e2d3; }
+    </style>
   </head>
-  <body style="margin: 0; background: #0a0b0c">
-    <div id="root"></div>
-    <!-- Loader istantaneo: copre l'attesa mentre carico i prodotti veri da Shopify
-         prima del mount (vedi main.tsx). Non mostra barre animate/determinate:
-         prima di React non abbiamo un progresso reale da misurare. -->
-    <div
-      id="boot"
-      style="position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; background: #0a0b0c; color: #e8e2d3; font-family: 'Bodoni Moda', Georgia, serif"
-    >
-      <!-- Lancio 21/9 (Lorenzo): niente scritta RUZZA in caricamento, solo il fondo scuro. -->
-    </div>
+  <body>
+    <main>
+      <p>Ruzza Orologi<br><a href="https://shop.ruzzaorologi.com/">Vai al sito</a></p>
+    </main>
   </body>
 </html>
